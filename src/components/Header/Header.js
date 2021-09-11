@@ -46,7 +46,7 @@ function Header() {
         </a>
         <ul>
           <li>
-            <a href="/search">Search</a>
+            <a href="/search/javascript">Search</a>
           </li>
           <li>
             <a href="#how-it-works">How it works</a>
