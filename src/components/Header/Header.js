@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Logo from '../../resources/logo';
+import logoPrimary from '../../resources/logoPrimary';
 
 const HeaderStyle = styled.header`
   nav {
@@ -42,7 +42,7 @@ function Header() {
     <HeaderStyle>
       <nav>
         <a href="/">
-          <div>{Logo}</div>
+          <div>{logoPrimary}</div>
         </a>
         <ul>
           <li>
