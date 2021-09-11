@@ -9,6 +9,11 @@ const HeaderStyle = styled.header`
     display: flex;
     justify-content: space-between;
 
+    div {
+      cursor: pointer;
+      margin: 32px 80px;
+    }
+
     ul {
       display: flex;
       list-style: none;
@@ -16,11 +21,17 @@ const HeaderStyle = styled.header`
       margin-right: 80px;
 
       li {
+        cursor: pointer;
         font-size: 1rem;
         font-weight: 400;
         line-height: 19.5px;
         margin: 0 25px;
         padding: 0.35px;
+
+        a {
+          color: #636363;
+          text-decoration: none;
+        }
       }
     }
   }
@@ -30,11 +41,19 @@ function Header() {
   return (
     <HeaderStyle>
       <nav>
-        <div>{Logo}</div>
+        <a href="/">
+          <div>{Logo}</div>
+        </a>
         <ul>
-          <li>Search</li>
-          <li>How it works</li>
-          <li>About</li>
+          <li>
+            <a href="/search">Search</a>
+          </li>
+          <li>
+            <a href="#how-it-works">How it works</a>
+          </li>
+          <li>
+            <a href="#about">About</a>
+          </li>
         </ul>
       </nav>
     </HeaderStyle>
