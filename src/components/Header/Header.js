@@ -18,16 +18,14 @@ const HeaderStyle = styled.header`
       display: flex;
       list-style: none;
       justify-content: space-between;
-      margin-right: 85px;
+      margin-right: 84px;
+
       li {
         cursor: pointer;
         font-size: 1rem;
         font-weight: 400;
+        margin-left: 25.5px;
 
-        &:nth-child(2),
-        &:nth-child(3) {
-          margin-left: 25px;
-        }
         a {
           color: #636363;
           text-decoration: none;
