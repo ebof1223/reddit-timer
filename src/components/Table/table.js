@@ -16,8 +16,8 @@ const Table = () => {
       {weekDays.map((day, index) => (
         <React.Fragment key={day}>
           <Day key={`${day}-${index}`}>{day}</Day>
-          {times.slice(1).map((time, index) => (
-            <Group key={`${day}-${time}-group-${index}`}>
+          {times.slice(1).map((time) => (
+            <Group key={`${day}-${time}`}>
               <Element key={`${day}-${time}-item-0`}>1</Element>
               <Element key={`${day}-${time}-item-1`}>1</Element>
             </Group>
