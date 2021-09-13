@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Button from '../../components/Button';
 import { FormContainer, Label, Input } from './Form.style';
 
-function Form({ onSearch }) {
+const Form = ({ onSearch }) => {
   const [subreddit, setSubreddit] = useState('javascript');
 
   const onSubmit = (event) => {
@@ -22,11 +22,9 @@ function Form({ onSearch }) {
         />
       </Label>
 
-      <Button type="submit">
-        Search
-      </Button>
+      <Button type="submit">Search</Button>
     </FormContainer>
   );
-}
+};
 
 export default Form;

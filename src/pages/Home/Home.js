@@ -3,9 +3,9 @@ import Container from '../../components/Container';
 import { Section, Headline, Status, TopPosts } from './Home.style';
 import Form from './Form';
 
-function Home() {
+const Home = () => {
   const [posts, setPosts] = useState([]);
-  const [status, setStatus] = useState('idle')
+  const [status, setStatus] = useState('idle');
 
   const onSearch = async (subreddit) => {
     setStatus('loading');
@@ -19,29 +19,20 @@ function Home() {
   return (
     <Container>
       <Section>
-        <Headline>
-          Find the top posts on Reddit
-        </Headline>
-
+        <Headline>No reactions to your reddit posts?</Headline>
+        <p>
+          Great timing, great results! Find the best time to post on your
+          subreddit.
+        </p>
         <Form onSearch={onSearch} />
       </Section>
 
-      {
-        status === 'loading' && (
-          <Status>
-            Is loading
-          </Status>
-        )
-      }
-      {
-        status === 'resolved' && (
-          <TopPosts>
-            Number of top posts: {posts.length}
-          </TopPosts>
-        )
-      }
+      {status === 'loading' && <Status>Is loading</Status>}
+      {status === 'resolved' && (
+        <TopPosts>Number of top posts: {posts.length}</TopPosts>
+      )}
     </Container>
   );
-}
+};
 
 export default Home;
