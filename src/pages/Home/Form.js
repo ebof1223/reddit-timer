@@ -12,6 +12,7 @@ const Form = ({ onSearch }) => {
 
   return (
     <FormContainer onSubmit={onSubmit}>
+      <Button type="submit">Show me the best time</Button>
       <Label>
         r /
         <Input
@@ -21,8 +22,6 @@ const Form = ({ onSearch }) => {
           onChange={(event) => setSubreddit(event.target.value)}
         />
       </Label>
-
-      <Button type="submit">Search</Button>
     </FormContainer>
   );
 };

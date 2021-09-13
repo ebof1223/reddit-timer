@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Container from '../../components/Container';
 import { Section, Headline, Status, TopPosts } from './Home.style';
 import Form from './Form';
+import Table from '../../components/Table';
 
 const Home = () => {
   const [posts, setPosts] = useState([]);
@@ -25,6 +26,7 @@ const Home = () => {
           subreddit.
         </p>
         <Form onSearch={onSearch} />
+        <Table />
       </Section>
 
       {status === 'loading' && <Status>Is loading</Status>}
