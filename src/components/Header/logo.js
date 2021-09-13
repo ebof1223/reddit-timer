@@ -1,6 +1,6 @@
 import React from 'react';
 
-const logoPrimary = (
+const LogoSVG = (
   <svg
     width="150"
     height="36"
@@ -60,5 +60,4 @@ const logoPrimary = (
     />
   </svg>
 );
-
-export default logoPrimary;
+export default LogoSVG;

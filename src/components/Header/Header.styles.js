@@ -12,12 +12,10 @@ export const Container = styled.header`
 export const Logo = styled.div`
   color: #636363;
   margin-left: 50px;
-  text-decoration: none;
 `;
 
 export const Menu = styled.nav`
   display: flex;
-  list-style: none;
   justify-content: space-between;
   margin-right: 54px;
 `;

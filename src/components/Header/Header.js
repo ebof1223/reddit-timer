@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import logoPrimary from '../../resources/logoPrimary';
 // eslint-disable-next-line object-curly-newline
 import { Container, Logo, Menu, NavLink } from './Header.styles';
+import LogoSVG from './logo';
 
 const Header = () => (
   <Container>
     <Link to="/">
-      <Logo>{logoPrimary}</Logo>
+      <Logo>{LogoSVG}</Logo>
     </Link>
 
     <Menu>

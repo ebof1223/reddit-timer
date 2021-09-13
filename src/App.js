@@ -19,7 +19,7 @@ const App = () => (
         <h1>About</h1>
       </Route>
       <Route path="/">
-        <h1>Home</h1>
+        <h1>Search</h1>
       </Route>
     </Switch>
   </>
