@@ -6,6 +6,8 @@ const timeCarryOver = (time, hour1, hour2) => {
   return time;
 };
 
+//only supports even hours
+//does not reliably change midnight and noon
 const generate24HrPostTimes = (start = '12:00') => {
   var postTimesArray = [start];
 
@@ -27,16 +29,14 @@ const generate24HrPostTimes = (start = '12:00') => {
     postTimesArray.push(currentTime);
   } while (currentTime !== start);
 
-  return postTimesArray;
+  const intervals = [
+    ...postTimesArray
+      .map((item) => item.concat('am'))
+      .slice(0, postTimesArray.length - 1),
+    ...postTimesArray
+      .slice(0, postTimesArray.length - 1)
+      .map((item) => item.concat('pm')),
+  ];
+  return intervals;
 };
-
-export const intervals = [
-  ...generate24HrPostTimes()
-    .map((item) => item.concat('am'))
-    .slice(0, generate24HrPostTimes().length - 1),
-  ...generate24HrPostTimes()
-    .slice(0, generate24HrPostTimes().length - 1)
-    .map((item) => item.concat('pm')),
-];
-
-console.log(intervals);
+export default generate24HrPostTimes;

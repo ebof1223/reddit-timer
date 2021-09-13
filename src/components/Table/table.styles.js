@@ -1,14 +1,6 @@
 import styled from 'styled-components';
 
 export const Hero = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr;
-  min-width: 80vw;
-  text-align: center;
-`;
-
-export const Times = styled.div`
   background: linear-gradient(180deg, #fefefe 0%, #e9e9e9 100%);
   display: grid;
   grid-template-columns: repeat(13, 1fr);
@@ -21,9 +13,6 @@ export const Time = styled.div`
   font-weight: 600;
   font-size: 14px;
   text-align: center;
-  :nth-child(1) {
-    visibility: hidden;
-  }
 `;
 export const Day = styled.div`
   background: #1e2537;
@@ -37,7 +26,8 @@ export const Element = styled.div`
   background: #a9d194;
   color: #ffffff;
   grid-row: 1/3;
-  padding: 1rem;
+  padding: 1rem 2rem;
+  text-align: center;
 `;
 
 export const Group = styled.div`
