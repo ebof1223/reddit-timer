@@ -1,28 +1,30 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import { Normalize } from 'styled-normalize';
-
 import GlobalStyle from './GlobalStyle';
 import Header from './components/Header';
+import Home from './pages/Home';
 
-const App = () => (
-  <>
-    <Normalize />
-    <GlobalStyle />
-    <Header />
+function App() {
+  return (
+    <>
+      <GlobalStyle />
+      <Header />
 
-    <Switch>
-      <Route path="/how-it-works">
-        <h1>How it works</h1>
-      </Route>
-      <Route path="/about">
-        <h1>About</h1>
-      </Route>
-      <Route path="/">
-        <h1>Search</h1>
-      </Route>
-    </Switch>
-  </>
-);
+      <main>
+        <Switch>
+          <Route path="/how-it-works">
+            <h1>How it works</h1>
+          </Route>
+          <Route path="/about">
+            <h1>About</h1>
+          </Route>
+          <Route path="/">
+            <Home />
+          </Route>
+        </Switch>
+      </main>
+    </>
+  );
+}
 
 export default App;

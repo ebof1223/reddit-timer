@@ -1,22 +1,25 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Container, Logo, NavLink } from './Header.style';
 
-// eslint-disable-next-line object-curly-newline
-import { Container, Logo, Menu, NavLink } from './Header.styles';
-import LogoSVG from './logo';
+function Header() {
+  return (
+    <Container as="header">
+      <Link to="/">
+        <Logo />
+      </Link>
 
-const Header = () => (
-  <Container>
-    <Link to="/">
-      <Logo>{LogoSVG}</Logo>
-    </Link>
+      <nav>
+        <NavLink to="/how-it-works">
+          How it works
+        </NavLink>
 
-    <Menu>
-      <NavLink to="/search/javascript">Search</NavLink>
-      <NavLink to="/how-it-works">How it works</NavLink>
-      <NavLink to="/about">About</NavLink>
-    </Menu>
-  </Container>
-);
+        <NavLink to="/about">
+          About
+        </NavLink>
+      </nav>
+    </Container>
+  );
+}
 
 export default Header;
