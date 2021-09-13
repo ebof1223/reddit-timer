@@ -63,6 +63,5 @@ describe('Form', () => {
     expect(fetch).toHaveBeenCalledWith(
       'https://www.reddit.com/r/reactjs/top.json'
     );
-    screen.debug();
   });
 });

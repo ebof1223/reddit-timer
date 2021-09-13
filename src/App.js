@@ -18,6 +18,9 @@ function App() {
           <Route path="/about">
             <h1>About</h1>
           </Route>
+          <Route path="/search/javascript">
+            <h1>About</h1>
+          </Route>
           <Route path="/">
             <Home />
           </Route>
