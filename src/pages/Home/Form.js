@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Button from '../../components/Button';
 import { FormContainer, Label, Input } from './Form.style';
 
+
 const Form = ({ onSearch }) => {
   const [subreddit, setSubreddit] = useState('javascript');
 

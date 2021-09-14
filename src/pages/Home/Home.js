@@ -4,19 +4,23 @@ import { Section, Headline, Status, TopPosts } from './Home.style';
 import Form from './Form';
 import Table from '../../components/Table';
 
+import {
+  endOfLastSaturdayEPOCH,
+  beginningOfSundayEPOCH,
+} from './getDateInterval';
+
 const Home = () => {
   const [posts, setPosts] = useState([]);
   const [status, setStatus] = useState('idle');
 
   const onSearch = async (subreddit) => {
     setStatus('loading');
-    const url = `https://www.reddit.com/r/${subreddit}/top.json`;
+    const url = `https://api.pushshift.io/reddit/search/submission/?subreddit=${subreddit}&after=${beginningOfSundayEPOCH}&before=${endOfLastSaturdayEPOCH}&aggs=created_utc&size=500`;
     const response = await fetch(url);
     const { data } = await response.json();
-    setPosts(data.children);
+    setPosts(data);
     setStatus('resolved');
   };
-
   return (
     <Container>
       <Section>
@@ -26,13 +30,14 @@ const Home = () => {
           subreddit.
         </p>
         <Form onSearch={onSearch} />
-        <Table />
+        {/* will be passig data in Table */}
+        <Table posts={posts} />
       </Section>
 
       {status === 'loading' && <Status>Is loading</Status>}
-      {status === 'resolved' && (
+      {/* {status === 'resolved' && (
         <TopPosts>Number of top posts: {posts.length}</TopPosts>
-      )}
+      )} */}
     </Container>
   );
 };
