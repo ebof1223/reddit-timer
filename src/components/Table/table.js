@@ -7,7 +7,11 @@ import { weekDays } from './weekDays';
 const Table = ({ posts }) => {
   const times = [null, ...generate24HrPostTimes()];
 
-  const createdTimes = posts.map((post) => new Date(post.created_utc * 1000));
+  const createdTimes = posts[0]
+    .reverse()
+    .map((post) => new Date(post.created_utc * 1000));
+
+  console.log(createdTimes);
 
   return (
     <Hero>

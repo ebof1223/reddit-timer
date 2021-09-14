@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
 import Container from '../../components/Container';
-import { Section, Headline, Status, TopPosts } from './Home.style';
+import { Section, Headline, Status } from './Home.style';
 import Form from './Form';
 import Table from '../../components/Table';
+import { weekInterval, getEpoch } from './getDateInterval';
 
-import {
-  endOfLastSaturdayEPOCH,
-  beginningOfSundayEPOCH,
-} from './getDateInterval';
+//import daysOfTheWeek Array
 
 const Home = () => {
   const [posts, setPosts] = useState([]);
@@ -15,12 +13,22 @@ const Home = () => {
 
   const onSearch = async (subreddit) => {
     setStatus('loading');
-    const url = `https://api.pushshift.io/reddit/search/submission/?subreddit=${subreddit}&after=${beginningOfSundayEPOCH}&before=${endOfLastSaturdayEPOCH}&aggs=created_utc&size=500`;
-    const response = await fetch(url);
-    const { data } = await response.json();
-    setPosts(data);
+
+    let lastWeekPosts = [];
+
+    for (let dayAfter = 1; dayAfter < weekInterval.length; dayAfter++) {
+      let dayAfterEpoch = getEpoch(weekInterval[dayAfter]);
+      let dayBeforeEpoch = getEpoch(weekInterval[dayAfter - 1]);
+
+      const url = `https://api.pushshift.io/reddit/search/submission/?subreddit=${subreddit}&after=${dayAfterEpoch}&before=${dayBeforeEpoch}&aggs=created_utc&size=500`;
+      const response = await fetch(url);
+      const { data } = await response.json();
+      lastWeekPosts = [...lastWeekPosts, data];
+    }
+    setPosts([...lastWeekPosts].reverse());
     setStatus('resolved');
   };
+
   return (
     <Container>
       <Section>
@@ -30,14 +38,10 @@ const Home = () => {
           subreddit.
         </p>
         <Form onSearch={onSearch} />
-        {/* will be passig data in Table */}
-        <Table posts={posts} />
+        {/* add loader */}
+        {status === 'loading' && <Status>Is loading</Status>}
+        {status === 'resolved' && <Table posts={posts} />}
       </Section>
-
-      {status === 'loading' && <Status>Is loading</Status>}
-      {/* {status === 'resolved' && (
-        <TopPosts>Number of top posts: {posts.length}</TopPosts>
-      )} */}
     </Container>
   );
 };
