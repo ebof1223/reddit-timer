@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import Cell from './Cell';
+
 export const Hero = styled.div`
   background: linear-gradient(180deg, #fefefe 0%, #e9e9e9 100%);
   display: grid;

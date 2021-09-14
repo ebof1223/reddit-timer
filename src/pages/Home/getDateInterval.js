@@ -32,7 +32,7 @@ const getWeekInterval = (date = today) => {
   return weekInterval;
 };
 
-export const weekInterval = getWeekInterval();
+export const lastFullWeek = getWeekInterval();
 
 export const getEpoch = (date) => {
   return Math.floor(new Date(date).getTime() / 1000);

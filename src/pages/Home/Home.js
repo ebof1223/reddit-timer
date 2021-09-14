@@ -3,9 +3,7 @@ import Container from '../../components/Container';
 import { Section, Headline, Status } from './Home.style';
 import Form from './Form';
 import Table from '../../components/Table';
-import { weekInterval, getEpoch } from './getDateInterval';
-
-//import daysOfTheWeek Array
+import { lastFullWeek, getEpoch } from './getDateInterval';
 
 const Home = () => {
   const [posts, setPosts] = useState([]);
@@ -16,9 +14,9 @@ const Home = () => {
 
     let lastWeekPosts = [];
 
-    for (let dayAfter = 1; dayAfter < weekInterval.length; dayAfter++) {
-      let dayAfterEpoch = getEpoch(weekInterval[dayAfter]);
-      let dayBeforeEpoch = getEpoch(weekInterval[dayAfter - 1]);
+    for (let dayAfter = 1; dayAfter < lastFullWeek.length; dayAfter++) {
+      let dayAfterEpoch = getEpoch(lastFullWeek[dayAfter]);
+      let dayBeforeEpoch = getEpoch(lastFullWeek[dayAfter - 1]);
 
       const url = `https://api.pushshift.io/reddit/search/submission/?subreddit=${subreddit}&after=${dayAfterEpoch}&before=${dayBeforeEpoch}&aggs=created_utc&size=500`;
       const response = await fetch(url);
