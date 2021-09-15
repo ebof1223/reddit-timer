@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { Element } from './table.styles';
+import { Element } from './Table.style';
 
 const Cell = () => {
   const [postCount, setPostCount] = useState(1);

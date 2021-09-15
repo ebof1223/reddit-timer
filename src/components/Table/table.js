@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Hero, Time, Group, Day } from './table.styles';
+import { Hero, Time, Day } from './Table.style';
 import generate24HrPostTimes from './table-times-generate';
 import lastWeekDays from './weekDays';
 import { lastFullWeek, getEpoch } from '../../pages/Home/getDateInterval';
@@ -8,6 +8,7 @@ import addHours from 'date-fns/addHours';
 import subSeconds from 'date-fns/subSeconds';
 import addSeconds from 'date-fns/addSeconds';
 import Cell from './Cell';
+import Hour from './Hour';
 import weekInterval from './getWeekIntervals';
 
 const Table = ({ posts }) => {
@@ -75,15 +76,16 @@ const Table = ({ posts }) => {
 
       {Object.keys(lastWeekDays).map((day, index) => (
         <React.Fragment key={day}>
+          {console.log(lastWeekDays)}
           <Day key={`${day}-${index}`}>{day}</Day>
-
           {times.slice(1).map((time) => (
-            <Group key={`${day}-${time}`}>
+            //make group its own component that takes the each day interval and passes down the appropriate ones to the cells
+            <Hour key={`${day}-${time}`}>
               {/* if post is on this day and between time and time + 30, sort in here */}
               <Cell key={`${day}-${time}-item-0`} />
               {/* if post is on this day and between time + 30 and time + 60, sort in here */}
               <Cell key={`${day}-${time}-item-1`} />
-            </Group>
+            </Hour>
           ))}
         </React.Fragment>
       ))}

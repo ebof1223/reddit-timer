@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-import Cell from './Cell';
-
 export const Hero = styled.div`
   background: linear-gradient(180deg, #fefefe 0%, #e9e9e9 100%);
   display: grid;
@@ -23,7 +21,6 @@ export const Day = styled.div`
   align-items: center;
   padding: 14.5px 48.5px;
 `;
-
 export const Element = styled.div`
   background: #a9d194;
   color: #ffffff;
