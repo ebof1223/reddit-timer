@@ -6,7 +6,6 @@ export const Hero = styled.div`
   grid-template-columns: repeat(13, 1fr);
   grid-template-rows: 8fr;
 `;
-
 export const Time = styled.div`
   padding: 1rem;
   color: #787878;
@@ -29,6 +28,3 @@ export const Element = styled.div`
   text-align: center;
 `;
 
-export const Group = styled.div`
-  display: grid;
-`;

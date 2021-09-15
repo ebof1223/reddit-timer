@@ -26,6 +26,6 @@ const getWeekInterval = (week = lastFullWeek) => {
   return weekIntervals;
 };
 
-const weekInterval = getWeekInterval();
+const weekIntervals = getWeekInterval();
 
-export default weekInterval;
+export default weekIntervals;

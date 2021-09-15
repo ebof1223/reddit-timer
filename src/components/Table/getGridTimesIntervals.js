@@ -8,21 +8,22 @@ const timeCarryOver = (time, hour1, hour2) => {
 
 //only supports even hours
 //does not reliably change midnight and noon
-const generate24HrPostTimes = (start = '12:00') => {
+const generate24HrPostTimes = (increment = 2, forObj = false) => {
+  let start = '12:00';
   var postTimesArray = [start];
 
   let currentTime = start;
 
   do {
     if (currentTime === '12:00') {
-      currentTime = timeCarryOver(currentTime, 0, 2);
+      currentTime = timeCarryOver(currentTime, 0, increment);
     } else if (currentTime === '08:00') {
       currentTime = timeCarryOver(currentTime, 1, 0);
     } else {
       currentTime = timeCarryOver(
         currentTime,
         Number(currentTime[0]),
-        Number(currentTime[1]) + 2
+        Number(currentTime[1]) + increment
       );
     }
 
@@ -37,6 +38,8 @@ const generate24HrPostTimes = (start = '12:00') => {
       .slice(0, postTimesArray.length - 1)
       .map((item) => item.concat('pm')),
   ];
+
+  if (forObj) intervals.push('11:59');
   return intervals;
 };
 export default generate24HrPostTimes;
