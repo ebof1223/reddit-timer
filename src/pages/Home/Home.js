@@ -4,7 +4,7 @@ import { Section, Headline, Status } from './Home.style';
 import Form from './Form';
 import Table from '../../components/Table';
 import { lastFullWeek, getEpoch } from './getDateInterval';
-
+import getBlockHourlyIntervals from '../../components/Table/getBlockHourlyIntervals';
 const Home = () => {
   const [posts, setPosts] = useState([]);
   const [status, setStatus] = useState('idle');

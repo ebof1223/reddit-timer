@@ -1,6 +1,6 @@
 import weekInterval from './getWeekIntervals';
 
-const weekDays = [
+export const weekDays = [
   'Sunday',
   'Monday',
   'Tuesday',

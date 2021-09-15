@@ -39,7 +39,8 @@ const generate24HrPostTimes = (increment = 2, forObj = false) => {
       .map((item) => item.concat('pm')),
   ];
 
-  if (forObj) intervals.push('11:59');
+  if (forObj) intervals.push('11:59pm');
   return intervals;
 };
+
 export default generate24HrPostTimes;

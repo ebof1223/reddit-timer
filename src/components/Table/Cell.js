@@ -2,10 +2,9 @@ import React, { useState } from 'react';
 
 import { Element } from './Table.style';
 
-const Cell = () => {
+const Cell = ({ props }) => {
   const [postCount, setPostCount] = useState(1);
-
-  return <Element>{postCount}</Element>;
+  return <Element onClick={() => console.log(props)}>{postCount}</Element>;
 };
 
 export default Cell;

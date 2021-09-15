@@ -28,3 +28,6 @@ export const Element = styled.div`
   text-align: center;
 `;
 
+export const Hour = styled.div`
+  display: grid;
+`;

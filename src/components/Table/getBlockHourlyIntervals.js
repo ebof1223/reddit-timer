@@ -3,16 +3,17 @@ import addHours from 'date-fns/addHours';
 import { getEpoch } from '../../pages/Home/getDateInterval';
 import generate24HrPostTimes from './getGridTimesIntervals';
 import subSeconds from 'date-fns/subSeconds';
+import isSameDay from 'date-fns/isSameDay';
 
-const getBlockHourlyIntervals = (increment = 2) => {
+//where hour type = 1 is is the first hour of an interval, and 2 is the second, hour type?
+const getBlockHourlyIntervals = (increment = 2, day) => {
   const hourlyIntervals = generate24HrPostTimes(increment, true);
 
   let start = 0;
   let end = 1;
   let hourToHourIntervals = [];
-  //dynmaically search
-  let startTime = lastWeekDays['Sunday'][0];
-  let endTime = lastWeekDays['Sunday'][1];
+  let startTime = lastWeekDays[day][0];
+  let endTime = lastWeekDays[day][1];
 
   while (startTime.EPOCH < endTime.EPOCH) {
     let temp = {};
@@ -28,6 +29,7 @@ const getBlockHourlyIntervals = (increment = 2) => {
       UTC: subIntervalHour1,
       EPOCH: subIntervalHour1_EPOCH,
     };
+
     temp[hourlyIntervals[end]] = {
       UTC: subIntervalHour2,
       EPOCH: subIntervalHour2_EPOCH,
@@ -42,16 +44,23 @@ const getBlockHourlyIntervals = (increment = 2) => {
   }
 
   const lastInterval = hourToHourIntervals.length - 1;
-  // hourToHourIntervals = hourToHourIntervals.slice(0, lastInterval);
-  hourToHourIntervals[lastInterval]['10:00pm'].UTC[1] = subSeconds(
-    hourToHourIntervals[lastInterval]['10:00pm'].UTC[1],
-    1
-  );
-  hourToHourIntervals[lastInterval]['10:00pm'].EPOCH[1] = getEpoch(
-    hourToHourIntervals[lastInterval]['10:00pm'].UTC[1]
-  );
+  if (
+    hourToHourIntervals[lastInterval] &&
+    hourToHourIntervals[lastInterval]['10:00pm']
+  ) {
+    const hour1 = hourToHourIntervals[lastInterval]['10:00pm'].UTC[0];
+    const hour2 = hourToHourIntervals[lastInterval]['10:00pm'].UTC[1];
 
-  if (increment === 2) delete hourToHourIntervals[lastInterval]['11:59'];
+    if (!isSameDay(hour1, hour2)) {
+      hourToHourIntervals[lastInterval]['10:00pm'].UTC[1] = subSeconds(
+        hourToHourIntervals[lastInterval]['10:00pm'].UTC[1],
+        1
+      );
+      hourToHourIntervals[lastInterval]['10:00pm'].EPOCH[1] =
+        hourToHourIntervals[lastInterval]['10:00pm'].EPOCH[1] - 1;
+    }
+    delete hourToHourIntervals[lastInterval]['11:59pm'];
+  }
 
   return hourToHourIntervals;
 };

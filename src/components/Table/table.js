@@ -1,41 +1,49 @@
 import React from 'react';
-
-import { Hero, Time, Day } from './Table.style';
+import { Hero, Time, Day, Hour } from './Table.style';
 import generate24HrPostTimes from './getGridTimesIntervals';
-import lastWeekDays from './weekDays';
+import lastWeekDays, { weekDays } from './weekDays';
 import { lastFullWeek, getEpoch } from '../../pages/Home/getDateInterval';
 import Cell from './Cell';
-import Hour from './Hour';
 import weekIntervals from './getWeekIntervals';
 import getBlockHourlyIntervals from './getBlockHourlyIntervals';
+import addHours from 'date-fns/addHours';
+import getSplitInterval from './getSplitInterval';
 
 const Table = ({ posts }) => {
-  const everyTwoHoursInterval = getBlockHourlyIntervals();
-  const times = [null, ...everyTwoHoursInterval];
+  const tableHeaderIntervals = [null, ...generate24HrPostTimes()];
 
   return (
     <Hero>
-      {times.map((time) =>
-        time ? (
-          <Time key={Object.keys(time)[0]}>{Object.keys(time)[0]}</Time>
-        ) : (
-          <Time key="blank" />
-        )
+      {tableHeaderIntervals.map((time) =>
+        time ? <Time key={time}>{time}</Time> : <Time key="blank" />
       )}
 
-      {Object.keys(lastWeekDays).map((day) => (
-        //run sorting function here using lastWeekDay[day]
+      {weekDays.map((day) => (
         <React.Fragment key={day}>
           <Day key={day}>{day}</Day>
-          {times.slice(1).map((time) => (
-            // make group its own component that takes the each day interval and passes down the appropriate ones to the cells
-            <Hour key={`${day}-${Object.keys(time)[0]}`}>
-              {/* if post is on this day and between time and time + 30, sort in here */}
-              <Cell key={`${day}-${Object.keys(time)[0]}-item-0`} />
-              {/* if post is on this day and between time + 30 and time + 60, sort in here */}
-              <Cell key={`${day}-${Object.keys(time)[0]}-item-1`} />
-            </Hour>
-          ))}
+          {getBlockHourlyIntervals(2, day)
+            // .slice(twoHourIntervals.length - 1)
+            .map((interval) => (
+              <Hour key={`${day}-${Object.keys(interval)[0]}`}>
+                <Cell
+                  key={`${day}-${Object.keys(interval)[0]}-item-0`}
+                  props={
+                    getSplitInterval(
+                      interval[Object.keys(interval)[0]].UTC[0]
+                    )[0]
+                  }
+                />
+
+                <Cell
+                  key={`${day}-${Object.keys(interval)[0]}-item-1`}
+                  props={
+                    getSplitInterval(
+                      interval[Object.keys(interval)[0]].UTC[0]
+                    )[1]
+                  }
+                />
+              </Hour>
+            ))}
         </React.Fragment>
       ))}
     </Hero>
