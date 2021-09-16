@@ -7,6 +7,8 @@ import getBlockHourlyIntervals from './getBlockHourlyIntervals';
 import getSplitInterval from './getSplitInterval';
 
 const Table = ({ posts }) => {
+  if (true) {
+  }
   const tableHeaderIntervals = [null, ...generate24HrPostTimes()];
   // console.log(posts);
   return (

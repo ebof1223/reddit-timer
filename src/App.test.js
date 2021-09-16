@@ -11,7 +11,6 @@ import generate24HrPostTimes from './components/Table/getGridTimesIntervals';
 import { weekDays } from './components/Table/weekDays';
 
 // fetchMock.enableMocks();
-
 beforeEach(() => {
   render(
     <MemoryRouter>
@@ -59,6 +58,7 @@ describe('Heatmap', () => {
     weekDays.map((day) => {
       screen.getByText(`${day}`);
     });
+    screen.debug();
   });
 
   //unable to locate grid cells in table
