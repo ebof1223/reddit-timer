@@ -6,8 +6,11 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import App from './App';
+import Table from './components/Table';
+import generate24HrPostTimes from './components/Table/getGridTimesIntervals';
+import { weekDays } from './components/Table/weekDays';
 
-fetchMock.enableMocks();
+// fetchMock.enableMocks();
 
 beforeEach(() => {
   render(
@@ -16,52 +19,47 @@ beforeEach(() => {
     </MemoryRouter>
   );
 });
-
 describe('Header', () => {
-  //how to condense this to a single test
-  test('Valid "How it works" links', () => {
+  test('should validate "How it works" links', () => {
     const name = new RegExp('how it works', 'i');
     const howItWorks = screen.getByRole('link', { name });
     userEvent.click(howItWorks);
     expect(screen.getByRole('heading', { name })).toBeInTheDocument();
   });
 
-  test('Valid "About" links', () => {
+  test('should validate "About" links', () => {
     const name = new RegExp('about', 'i');
     const about = screen.getByRole('link', { name });
     userEvent.click(about);
     expect(screen.getByRole('heading', { name })).toBeInTheDocument();
   });
 
-  test('Valid logo link', () => {
+  test('should validate logo link', () => {
     const name = new RegExp('logo.svg', 'i');
     const logo = screen.getByRole('link', { name });
     userEvent.click(logo);
     expect(
-      screen.getByRole('heading', { name: 'Find the top posts on Reddit' })
+      screen.getByRole('heading', {
+        name: 'No reactions to your reddit posts?',
+      })
     ).toBeInTheDocument();
   });
 });
 
-describe('Form', () => {
-  test('load posts and renders them on the page', async () => {
-    fetch.once(JSON.stringify(mockResponse));
+describe('Heatmap', () => {
+  test('should display 2 hour interval slots on the row header ', () => {
+    var twoHourIntervals = generate24HrPostTimes();
 
-    const subredditInput = screen.getByLabelText('r /');
-    userEvent.type(subredditInput, 'reactjs');
-
-    const submitButton = screen.getByRole('button', { name: 'Search' });
-    userEvent.click(submitButton);
-
-    const loading = screen.getByText(/is loading/i);
-    expect(loading).toBeInTheDocument();
-
-    const numberOfTopPosts = await screen.findByText(
-      /Number of top posts: 25/i
-    );
-    expect(numberOfTopPosts).toBeInTheDocument();
-    expect(fetch).toHaveBeenCalledWith(
-      'https://www.reddit.com/r/reactjs/top.json'
-    );
+    twoHourIntervals.map((interval) => {
+      screen.getByText(`${interval}`);
+    });
   });
+
+  test('should display every day of the week on the column header', () => {
+    weekDays.map((day) => {
+      screen.getByText(`${day}`);
+    });
+  });
+
+  //unable to locate grid cells in table
 });

@@ -9,7 +9,6 @@ import getSplitInterval from './getSplitInterval';
 const Table = ({ posts }) => {
   const tableHeaderIntervals = [null, ...generate24HrPostTimes()];
   // console.log(posts);
-
   return (
     <Hero>
       {tableHeaderIntervals.map((time) =>
@@ -22,14 +21,14 @@ const Table = ({ posts }) => {
           {getBlockHourlyIntervals(2, day).map((interval) => (
             <Hour key={`${day}-${Object.keys(interval)[0]}`}>
               <Cell
-                key={`${day}-${Object.keys(interval)[0]}-item-0`}
+                key={`${day}-${Object.keys(interval)[0]}-hour1`}
                 props={
                   getSplitInterval(interval[Object.keys(interval)[0]].UTC[0])[0]
                 }
               />
 
               <Cell
-                key={`${day}-${Object.keys(interval)[0]}-item-1`}
+                key={`${day}-${Object.keys(interval)[0]}-hour2`}
                 props={
                   getSplitInterval(interval[Object.keys(interval)[0]].UTC[0])[1]
                 }
