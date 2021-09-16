@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import Button from '../../components/Button';
 import { FormContainer, Label, Input } from './Form.style';
 
-function Form({ onSearch }) {
+
+const Form = ({ onSearch }) => {
   const [subreddit, setSubreddit] = useState('javascript');
 
   const onSubmit = (event) => {
@@ -12,6 +13,7 @@ function Form({ onSearch }) {
 
   return (
     <FormContainer onSubmit={onSubmit}>
+      <Button type="submit">Show me the best time</Button>
       <Label>
         r /
         <Input
@@ -21,12 +23,8 @@ function Form({ onSearch }) {
           onChange={(event) => setSubreddit(event.target.value)}
         />
       </Label>
-
-      <Button type="submit">
-        Search
-      </Button>
     </FormContainer>
   );
-}
+};
 
 export default Form;

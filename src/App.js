@@ -4,7 +4,7 @@ import GlobalStyle from './GlobalStyle';
 import Header from './components/Header';
 import Home from './pages/Home';
 
-function App() {
+const App = () => {
   return (
     <>
       <GlobalStyle />
@@ -18,9 +18,6 @@ function App() {
           <Route path="/about">
             <h1>About</h1>
           </Route>
-          <Route path="/search/javascript">
-            <h1>About</h1>
-          </Route>
           <Route path="/">
             <Home />
           </Route>
@@ -28,6 +25,6 @@ function App() {
       </main>
     </>
   );
-}
+};
 
 export default App;

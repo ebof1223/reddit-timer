@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Logo, NavLink } from './Header.style';
 
-function Header() {
+const Header = () => {
   return (
     <Container as="header">
       <Link to="/">
@@ -10,13 +10,11 @@ function Header() {
       </Link>
 
       <nav>
-        <NavLink to="/search/javascript">Search</NavLink>
         <NavLink to="/how-it-works">How it works</NavLink>
-
         <NavLink to="/about">About</NavLink>
       </nav>
     </Container>
   );
-}
+};
 
 export default Header;
