@@ -1,6 +1,6 @@
-import Button from 'components/Button';
 import React, { useState } from 'react';
 
+import Button from 'components/Button';
 import { FormContainer, Input, Label } from './Form.style';
 
 const Form = ({ onSearch }) => {

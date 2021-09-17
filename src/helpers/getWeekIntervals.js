@@ -24,7 +24,7 @@ const getWeekInterval = (week = lastFullWeek.reverse()) => {
       { UTC: end, EPOCH: end_EPOCH },
     ]);
   }
-
+  //removes the last interval created, which would be midmight to 2:00am of the next day
   weekIntervals.pop();
 
   return weekIntervals;

@@ -65,7 +65,7 @@ describe('Heatmap', () => {
     weekDays.map((day) => {
       screen.getByText(`${day}`);
     });
-    screen.debug();
+    // screen.debug();
   });
 
   //unable to locate grid cells in table

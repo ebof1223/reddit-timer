@@ -1,6 +1,7 @@
-import React from 'react';
-import { Container, Logo, NavLink } from './Header.style';
 import { Link } from 'react-router-dom';
+import React from 'react';
+
+import { Container, Logo, NavLink } from './Header.style';
 
 const Header = () => {
   return (

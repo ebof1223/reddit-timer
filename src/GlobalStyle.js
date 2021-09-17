@@ -6,10 +6,10 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
+    color: #93918f;
     font-family: "Montserrat", sans-serif;
     font-size: 16px;
     line-height: 1.69;
-    color: #93918f;
 
     h1, h2, h3, h4, h5, h6 {
       color: #000000;

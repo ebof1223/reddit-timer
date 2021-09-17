@@ -18,10 +18,11 @@ const getGridHeaderInterval = (increment = 2, forObj = false) => {
         Number(currentTime[1]) + increment
       );
     }
+
     postTimesArray.push(currentTime);
   } while (currentTime !== start);
 
-  const intervals = [
+  var intervals = [
     ...postTimesArray
       .map((item) => item.concat('am'))
       .slice(0, postTimesArray.length - 1),
