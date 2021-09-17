@@ -1,15 +1,14 @@
-import React from 'react';
-import { Hero, Time, Day, Hour } from './Table.style';
-import generate24HrPostTimes from '../../helpers/getGridTimesIntervals';
-import lastWeekDays from '../../helpers/getDaysOfTheWeek';
 import Cell from './Cell';
-// getBlockHourlyIntervals
-// can't rename for some reason?
+import React from 'react';
+
+import { Day, Hero, Hour, Time } from './Table.style';
+import getGridHeaderInterval from '../../helpers/getGridHeaderInterval';
+import lastWeekDays from '../../helpers/getDaysOfTheWeek';
 import getHourlyIntervalsPerDay from '../../helpers/getHourlyIntervalsPerDay';
 import getSplitInterval from '../../helpers/getSplitInterval';
 
 const Table = ({ posts }) => {
-  const tableHeaderIntervals = [null, ...generate24HrPostTimes()];
+  const tableHeaderIntervals = [null, ...getGridHeaderInterval()];
   // console.log(posts);
   return (
     <Hero>

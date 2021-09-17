@@ -1,7 +1,7 @@
-import isSaturday from 'date-fns/isSaturday';
 import endOfDay from 'date-fns/endOfDay';
-import startOfDay from 'date-fns/startOfDay';
+import isSaturday from 'date-fns/isSaturday';
 import isSunday from 'date-fns/isSunday';
+import startOfDay from 'date-fns/startOfDay';
 
 var today = new Date(Date.now());
 

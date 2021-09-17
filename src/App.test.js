@@ -7,8 +7,8 @@ import userEvent from '@testing-library/user-event';
 
 import App from './App';
 import Table from './components/Table';
-import generate24HrPostTimes from './components/Table/getGridTimesIntervals';
-import { weekDays } from './components/Table/weekDays';
+import generate24HrPostTimes from './helpers/getGridTimesIntervals';
+import { weekDays } from './helpers/getDaysOfTheWeek';
 
 // fetchMock.enableMocks();
 describe('Header', () => {
@@ -65,7 +65,6 @@ describe('Heatmap', () => {
     weekDays.map((day) => {
       screen.getByText(`${day}`);
     });
-    screen.debug();
   });
 
   //unable to locate grid cells in table

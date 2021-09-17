@@ -1,5 +1,7 @@
 import weekInterval from './getWeekIntervals';
 
+var lastWeekDays = {};
+
 export const weekDays = [
   'Sunday',
   'Monday',
@@ -10,10 +12,9 @@ export const weekDays = [
   'Saturday',
 ];
 
-let lastWeekDays = {};
-
 for (let day of weekInterval) {
   let dayIndex = day[0].UTC.getDay();
   lastWeekDays[weekDays[dayIndex]] = day;
 }
+
 export default lastWeekDays;

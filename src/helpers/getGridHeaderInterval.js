@@ -1,18 +1,10 @@
-const timeCarryOver = (time, hour1, hour2) => {
-  time = time.split('');
-  time[0] = hour1.toString();
-  time[1] = hour2.toString();
-  time = time.join('');
-  return time;
-};
-
-//only supports even hours
-//does not reliably change midnight and noon
-const generate24HrPostTimes = (increment = 2, forObj = false) => {
+//only for midnight to midnight
+const getGridHeaderInterval = (increment = 2, forObj = false) => {
   let start = '12:00';
-  var postTimesArray = [start];
 
   let currentTime = start;
+
+  var postTimesArray = [start];
 
   do {
     if (currentTime === '12:00') {
@@ -26,7 +18,6 @@ const generate24HrPostTimes = (increment = 2, forObj = false) => {
         Number(currentTime[1]) + increment
       );
     }
-
     postTimesArray.push(currentTime);
   } while (currentTime !== start);
 
@@ -43,4 +34,12 @@ const generate24HrPostTimes = (increment = 2, forObj = false) => {
   return intervals;
 };
 
-export default generate24HrPostTimes;
+function timeCarryOver(time, hour1, hour2) {
+  time = time.split('');
+  time[0] = hour1.toString();
+  time[1] = hour2.toString();
+  time = time.join('');
+  return time;
+}
+
+export default getGridHeaderInterval;

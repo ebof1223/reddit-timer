@@ -3,7 +3,7 @@ import addHours from 'date-fns/addHours';
 import { getEpoch } from './getDateInterval';
 
 const getSplitInterval = (interval) => {
-  var array = [];
+  var splitInterval = [];
 
   const hour1 = interval;
 
@@ -22,10 +22,10 @@ const getSplitInterval = (interval) => {
       EPOCH,
     };
 
-    array.push(temp);
+    splitInterval.push(temp);
   }
 
-  return array;
+  return splitInterval;
 };
 
 export default getSplitInterval;
