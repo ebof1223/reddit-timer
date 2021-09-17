@@ -6,15 +6,9 @@
     "cypress/globals": true
   },
   "parser": "babel-eslint",
-  "extends": ["airbnb"],
-  "plugins": ["cypress", "react-hooks"],
+  "extends": ["eslint:recommended", "prettier", "react-app"],
+  "plugins": ["cypress", "react-hooks", "react", "jsx-a11y", "prettier"],
   "rules": {
-    "cypress/no-assigning-return-values": "error",
-    "cypress/no-unnecessary-waiting": "error",
-    "cypress/assertion-before-screenshot": "warn",
-    "cypress/no-force": "warn",
-    "react/jsx-filename-extension": [1, { "extensions": [".js"] }],
-    "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "error"
+    "no-unused-vars": "warn"
   }
 }

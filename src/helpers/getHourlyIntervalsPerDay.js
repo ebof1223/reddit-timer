@@ -1,17 +1,18 @@
-import lastWeekDays from './weekDays';
 import addHours from 'date-fns/addHours';
-import { getEpoch } from '../../pages/Home/getDateInterval';
-import generate24HrPostTimes from './getGridTimesIntervals';
-import subSeconds from 'date-fns/subSeconds';
 import isSameDay from 'date-fns/isSameDay';
+import subSeconds from 'date-fns/subSeconds';
 
-//where hour type = 1 is is the first hour of an interval, and 2 is the second, hour type?
-const getBlockHourlyIntervals = (increment = 2, day) => {
+import { getEpoch } from './getDateInterval';
+import generate24HrPostTimes from './getGridHeaderInterval';
+import lastWeekDays from './getDaysOfTheWeek';
+
+const getHourlyIntervalsPerDay = (increment = 2, day) => {
   const hourlyIntervals = generate24HrPostTimes(increment, true);
+
+  var hourToHourIntervals = [];
 
   let start = 0;
   let end = 1;
-  let hourToHourIntervals = [];
   let startTime = lastWeekDays[day][0];
   let endTime = lastWeekDays[day][1];
 
@@ -44,6 +45,7 @@ const getBlockHourlyIntervals = (increment = 2, day) => {
   }
 
   const lastInterval = hourToHourIntervals.length - 1;
+
   if (
     hourToHourIntervals[lastInterval] &&
     hourToHourIntervals[lastInterval]['10:00pm']
@@ -65,6 +67,4 @@ const getBlockHourlyIntervals = (increment = 2, day) => {
   return hourToHourIntervals;
 };
 
-// getBlockHourlyIntervals();
-
-export default getBlockHourlyIntervals;
+export default getHourlyIntervalsPerDay;

@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const Hero = styled.div`
   background: linear-gradient(180deg, #fefefe 0%, #e9e9e9 100%);
+  cursor: default;
   display: grid;
   grid-template-columns: repeat(13, 1fr);
   grid-template-rows: 8fr;
@@ -22,6 +23,7 @@ export const Day = styled.div`
 `;
 export const Element = styled.div`
   background: #a9d194;
+  cursor: pointer;
   color: #ffffff;
   grid-row: 1/3;
   padding: 1rem 2rem;

@@ -1,13 +1,15 @@
-import React from 'react';
-import { Hero, Time, Day, Hour } from './Table.style';
-import generate24HrPostTimes from './getGridTimesIntervals';
-import lastWeekDays from './weekDays';
 import Cell from './Cell';
-import getBlockHourlyIntervals from './getBlockHourlyIntervals';
-import getSplitInterval from './getSplitInterval';
+import React from 'react';
+
+import { Day, Hero, Hour, Time } from './Table.style';
+import getGridHeaderInterval from '../../helpers/getGridHeaderInterval';
+import lastWeekDays from '../../helpers/getDaysOfTheWeek';
+import getHourlyIntervalsPerDay from '../../helpers/getHourlyIntervalsPerDay';
+import getSplitInterval from '../../helpers/getSplitInterval';
 
 const Table = ({ posts }) => {
-  const tableHeaderIntervals = [null, ...generate24HrPostTimes()];
+  const tableHeaderIntervals = [null, ...getGridHeaderInterval()];
+
   // console.log(posts);
 
   return (
@@ -19,17 +21,16 @@ const Table = ({ posts }) => {
       {Object.keys(lastWeekDays).map((day) => (
         <React.Fragment key={day}>
           <Day key={day}>{day}</Day>
-          {getBlockHourlyIntervals(2, day).map((interval) => (
+          {getHourlyIntervalsPerDay(2, day).map((interval) => (
             <Hour key={`${day}-${Object.keys(interval)[0]}`}>
               <Cell
-                key={`${day}-${Object.keys(interval)[0]}-item-0`}
+                key={`${day}-${Object.keys(interval)[0]}-hour1`}
                 props={
                   getSplitInterval(interval[Object.keys(interval)[0]].UTC[0])[0]
                 }
               />
-
               <Cell
-                key={`${day}-${Object.keys(interval)[0]}-item-1`}
+                key={`${day}-${Object.keys(interval)[0]}-hour2`}
                 props={
                   getSplitInterval(interval[Object.keys(interval)[0]].UTC[0])[1]
                 }

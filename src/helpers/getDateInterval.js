@@ -1,9 +1,9 @@
-import isSaturday from 'date-fns/isSaturday';
 import endOfDay from 'date-fns/endOfDay';
+import isSaturday from 'date-fns/isSaturday';
+import isSunday from 'date-fns/isSunday';
 import startOfDay from 'date-fns/startOfDay';
-import { isSunday } from 'date-fns';
 
-let today = new Date(Date.now());
+var today = new Date(Date.now());
 
 const getYesterday = (date) => {
   let yesterday = new Date(date.getTime());
