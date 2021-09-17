@@ -1,9 +1,10 @@
-import lastWeekDays from './weekDays';
 import addHours from 'date-fns/addHours';
-import { getEpoch } from '../../pages/Home/getDateInterval';
-import generate24HrPostTimes from './getGridTimesIntervals';
-import subSeconds from 'date-fns/subSeconds';
 import isSameDay from 'date-fns/isSameDay';
+import subSeconds from 'date-fns/subSeconds';
+
+import { getEpoch } from './getDateInterval';
+import generate24HrPostTimes from './getGridTimesIntervals';
+import lastWeekDays from './getDaysOfTheWeek';
 
 //where hour type = 1 is is the first hour of an interval, and 2 is the second, hour type?
 const getHourlyIntervalsPerDay = (increment = 2, day) => {

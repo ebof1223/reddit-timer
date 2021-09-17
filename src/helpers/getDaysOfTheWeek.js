@@ -1,6 +1,5 @@
 import weekInterval from './getWeekIntervals';
 
-//rename to days of the week
 export const weekDays = [
   'Sunday',
   'Monday',

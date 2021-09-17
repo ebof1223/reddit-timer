@@ -1,12 +1,12 @@
 import React from 'react';
 import { Hero, Time, Day, Hour } from './Table.style';
-import generate24HrPostTimes from './getGridTimesIntervals';
-import lastWeekDays from './weekDays';
+import generate24HrPostTimes from '../../helpers/getGridTimesIntervals';
+import lastWeekDays from '../../helpers/getDaysOfTheWeek';
 import Cell from './Cell';
 // getBlockHourlyIntervals
 // can't rename for some reason?
-import getHourlyIntervalsPerDay from './getHourlyIntervalsPerDay';
-import getSplitInterval from './getSplitInterval';
+import getHourlyIntervalsPerDay from '../../helpers/getHourlyIntervalsPerDay';
+import getSplitInterval from '../../helpers/getSplitInterval';
 
 const Table = ({ posts }) => {
   const tableHeaderIntervals = [null, ...generate24HrPostTimes()];

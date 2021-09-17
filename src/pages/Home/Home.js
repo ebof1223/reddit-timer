@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+
 import Container from '../../components/Container';
-import { Section, Headline, Status } from './Home.style';
 import Form from './Form';
+import { Headline, Section, Status } from './Home.style';
 import Table from '../../components/Table';
-import { lastFullWeek, getEpoch } from './getDateInterval';
-import lastWeekDays from '../../components/Table/weekDays';
+
+import { lastFullWeek, getEpoch } from '../../helpers/getDateInterval';
+
 const Home = () => {
   const [posts, setPosts] = useState([]);
   const [status, setStatus] = useState('idle');

@@ -1,6 +1,6 @@
 import addHours from 'date-fns/addHours';
 
-import { getEpoch } from '../../pages/Home/getDateInterval';
+import { getEpoch } from './getDateInterval';
 
 const getSplitInterval = (interval) => {
   var array = [];

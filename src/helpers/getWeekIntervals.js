@@ -1,4 +1,4 @@
-import { lastFullWeek, getEpoch } from '../../pages/Home/getDateInterval';
+import { lastFullWeek, getEpoch } from './getDateInterval';
 import addHours from 'date-fns/addHours';
 import subSeconds from 'date-fns/subSeconds';
 import addSeconds from 'date-fns/addSeconds';
