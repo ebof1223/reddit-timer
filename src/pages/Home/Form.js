@@ -1,4 +1,4 @@
-import Button from '../../components/Button';
+import Button from 'components/Button';
 import React, { useState } from 'react';
 
 import { FormContainer, Input, Label } from './Form.style';

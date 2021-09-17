@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 
-import Container from '../../components/Container';
+import Container from 'components/Container';
 import Form from './Form';
 import { Headline, Section, Status } from './Home.style';
-import Table from '../../components/Table';
+import Table from 'components/Table';
 
-import { lastFullWeek, getEpoch } from '../../helpers/getDateInterval';
+import { lastFullWeek, getEpoch } from 'helpers/getDateInterval';
 
 const Home = () => {
   const [posts, setPosts] = useState([]);

@@ -1,4 +1,4 @@
-import Header from './components/Header';
+import Header from 'components/Header';
 import Home from './pages/Home';
 import GlobalStyle from './GlobalStyle';
 import React from 'react';

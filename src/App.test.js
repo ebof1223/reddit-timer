@@ -6,9 +6,9 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import App from './App';
-import Table from './components/Table';
-import generate24HrPostTimes from './helpers/getGridTimesIntervals';
-import { weekDays } from './helpers/getDaysOfTheWeek';
+import Table from 'components/Table';
+import getGridHeaderInterval from 'helpers/getGridHeaderInterval';
+import { weekDays } from 'helpers/getDaysOfTheWeek';
 
 // fetchMock.enableMocks();
 describe('Header', () => {
@@ -54,7 +54,7 @@ describe('Heatmap', () => {
     );
   });
   test('should display 2 hour interval slots on the row header ', () => {
-    var twoHourIntervals = generate24HrPostTimes();
+    var twoHourIntervals = getGridHeaderInterval();
 
     twoHourIntervals.map((interval) => {
       screen.getByText(`${interval}`);
@@ -65,6 +65,7 @@ describe('Heatmap', () => {
     weekDays.map((day) => {
       screen.getByText(`${day}`);
     });
+    screen.debug();
   });
 
   //unable to locate grid cells in table

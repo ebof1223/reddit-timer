@@ -2,10 +2,10 @@ import Cell from './Cell';
 import React from 'react';
 
 import { Day, Hero, Hour, Time } from './Table.style';
-import getGridHeaderInterval from '../../helpers/getGridHeaderInterval';
-import lastWeekDays from '../../helpers/getDaysOfTheWeek';
-import getHourlyIntervalsPerDay from '../../helpers/getHourlyIntervalsPerDay';
-import getSplitInterval from '../../helpers/getSplitInterval';
+import getGridHeaderInterval from 'helpers/getGridHeaderInterval';
+import lastWeekDays from 'helpers/getDaysOfTheWeek';
+import getHourlyIntervalsPerDay from 'helpers/getHourlyIntervalsPerDay';
+import getSplitInterval from 'helpers/getSplitInterval';
 
 const Table = ({ posts }) => {
   const tableHeaderIntervals = [null, ...getGridHeaderInterval()];
