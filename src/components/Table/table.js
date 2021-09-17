@@ -9,7 +9,9 @@ import getSplitInterval from '../../helpers/getSplitInterval';
 
 const Table = ({ posts }) => {
   const tableHeaderIntervals = [null, ...getGridHeaderInterval()];
+
   // console.log(posts);
+
   return (
     <Hero>
       {tableHeaderIntervals.map((time) =>
