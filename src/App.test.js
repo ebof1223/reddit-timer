@@ -11,14 +11,14 @@ import generate24HrPostTimes from './components/Table/getGridTimesIntervals';
 import { weekDays } from './components/Table/weekDays';
 
 // fetchMock.enableMocks();
-beforeEach(() => {
-  render(
-    <MemoryRouter>
-      <App />
-    </MemoryRouter>
-  );
-});
 describe('Header', () => {
+  beforeEach(() => {
+    render(
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>
+    );
+  });
   test('should validate "How it works" links', () => {
     const name = new RegExp('how it works', 'i');
     const howItWorks = screen.getByRole('link', { name });
@@ -46,6 +46,13 @@ describe('Header', () => {
 });
 
 describe('Heatmap', () => {
+  beforeEach(() => {
+    render(
+      <MemoryRouter>
+        <Table />
+      </MemoryRouter>
+    );
+  });
   test('should display 2 hour interval slots on the row header ', () => {
     var twoHourIntervals = generate24HrPostTimes();
 

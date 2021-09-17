@@ -6,7 +6,7 @@ import subSeconds from 'date-fns/subSeconds';
 import isSameDay from 'date-fns/isSameDay';
 
 //where hour type = 1 is is the first hour of an interval, and 2 is the second, hour type?
-const getBlockHourlyIntervals = (increment = 2, day) => {
+const getHourlyIntervalsPerDay = (increment = 2, day) => {
   const hourlyIntervals = generate24HrPostTimes(increment, true);
 
   let start = 0;
@@ -65,6 +65,4 @@ const getBlockHourlyIntervals = (increment = 2, day) => {
   return hourToHourIntervals;
 };
 
-// getBlockHourlyIntervals();
-
-export default getBlockHourlyIntervals;
+export default getHourlyIntervalsPerDay;

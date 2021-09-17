@@ -3,12 +3,12 @@ import { Hero, Time, Day, Hour } from './Table.style';
 import generate24HrPostTimes from './getGridTimesIntervals';
 import lastWeekDays from './weekDays';
 import Cell from './Cell';
-import getBlockHourlyIntervals from './getBlockHourlyIntervals';
+// getBlockHourlyIntervals
+// can't rename for some reason?
+import getHourlyIntervalsPerDay from './getHourlyIntervalsPerDay';
 import getSplitInterval from './getSplitInterval';
 
 const Table = ({ posts }) => {
-  if (true) {
-  }
   const tableHeaderIntervals = [null, ...generate24HrPostTimes()];
   // console.log(posts);
   return (
@@ -20,7 +20,7 @@ const Table = ({ posts }) => {
       {Object.keys(lastWeekDays).map((day) => (
         <React.Fragment key={day}>
           <Day key={day}>{day}</Day>
-          {getBlockHourlyIntervals(2, day).map((interval) => (
+          {getHourlyIntervalsPerDay(2, day).map((interval) => (
             <Hour key={`${day}-${Object.keys(interval)[0]}`}>
               <Cell
                 key={`${day}-${Object.keys(interval)[0]}-hour1`}
@@ -28,7 +28,6 @@ const Table = ({ posts }) => {
                   getSplitInterval(interval[Object.keys(interval)[0]].UTC[0])[0]
                 }
               />
-
               <Cell
                 key={`${day}-${Object.keys(interval)[0]}-hour2`}
                 props={
