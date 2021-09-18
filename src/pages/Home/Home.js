@@ -18,17 +18,17 @@ const Home = () => {
 
     var lastWeekPosts = [];
 
-    for (let dayAfter = 1; dayAfter < lastFullWeek_EPOCH.length; dayAfter++) {
-      const dayAfterEpoch = lastFullWeek_EPOCH[dayAfter - 1];
-      const dayBeforeEpoch = lastFullWeek_EPOCH[dayAfter];
+    // for (let dayAfter = 1; dayAfter < lastFullWeek_EPOCH.length; dayAfter++) {
+    //   const dayAfterEpoch = lastFullWeek_EPOCH[dayAfter - 1];
+    //   const dayBeforeEpoch = lastFullWeek_EPOCH[dayAfter];
 
-      const url = `https://api.pushshift.io/reddit/search/submission/?subreddit=${subreddit}&after=${dayAfterEpoch}&before=${dayBeforeEpoch}&size=100`;
+    //   const url = `https://api.pushshift.io/reddit/search/submission/?subreddit=${subreddit}&after=${dayAfterEpoch}&before=${dayBeforeEpoch}&size=100`;
 
-      const response = await fetch(url);
-      const { data } = await response.json();
-      console.log(data);
-      lastWeekPosts = [...lastWeekPosts, data];
-    }
+    //   const response = await fetch(url);
+    //   const { data } = await response.json();
+    //   console.log(data);
+    //   lastWeekPosts = [...lastWeekPosts, data];
+    // }
     setPosts([...lastWeekPosts].reverse());
     setStatus('resolved');
   };
