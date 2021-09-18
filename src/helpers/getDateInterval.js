@@ -37,3 +37,9 @@ export const lastFullWeek = getWeekInterval();
 export function getEpoch(date) {
   return Math.floor(new Date(date).getTime() / 1000);
 }
+
+export function getUTC(utcSeconds) {
+  const date = new Date(0);
+  date.setUTCSeconds(utcSeconds);
+  return date;
+}
