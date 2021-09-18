@@ -75,4 +75,8 @@ const getHourlyIntervalsPerDay = (increment = 2, day) => {
   return hourToHourIntervals;
 };
 
-export default getHourlyIntervalsPerDay;
+const weekDayWithOneHourIntervals = Object.keys(lastWeekDays).map((day) =>
+  getHourlyIntervalsPerDay(2, day)
+);
+
+export default weekDayWithOneHourIntervals;
