@@ -1,16 +1,10 @@
-import fetchMock from 'jest-fetch-mock';
 import { MemoryRouter } from 'react-router';
-import mockResponse from './__mocks__/subreddit-react-js-response.json';
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import App from './App';
-import Table from 'components/Table';
-import getGridHeaderInterval from 'helpers/getGridHeaderInterval';
-import { weekDays } from 'helpers/getDaysOfTheWeek';
+import App from 'App';
 
-// fetchMock.enableMocks();
 describe('Header', () => {
   beforeEach(() => {
     render(
@@ -43,30 +37,4 @@ describe('Header', () => {
       })
     ).toBeInTheDocument();
   });
-});
-
-describe('Heatmap', () => {
-  beforeEach(() => {
-    render(
-      <MemoryRouter>
-        <Table />
-      </MemoryRouter>
-    );
-  });
-  test('should display 2 hour interval slots on the row header ', () => {
-    var twoHourIntervals = getGridHeaderInterval();
-
-    twoHourIntervals.map((interval) => {
-      screen.getByText(`${interval}`);
-    });
-  });
-
-  test('should display every day of the week on the column header', () => {
-    weekDays.map((day) => {
-      screen.getByText(`${day}`);
-    });
-    screen.debug(undefined, Infinity);
-  });
-
-  //unable to locate grid cells in table
 });
