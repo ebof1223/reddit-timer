@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React from 'react';
 
 import Cell from './Cell';
 import { Day, Hero, Hour, Section, Time } from './Table.style';
@@ -9,7 +9,6 @@ import lastWeekDays from 'helpers/getDaysOfTheWeek';
 import weekDayWithOneHourIntervals from 'helpers/getHourlyIntervalsPerDay';
 
 const Table = ({ posts }) => {
-  const [postCountSpread, setPostCountSpread] = useState([]);
   const tableHeaderIntervals = [null, ...getGridHeaderInterval()];
 
   const sortPost = (postTime_EPOCH, interval) => {
@@ -45,7 +44,7 @@ const Table = ({ posts }) => {
                     posts.map((dayWithIntervals) =>
                       dayWithIntervals.filter((post) =>
                         sortPost(
-                          post,
+                          post.retrieved_on,
                           getSplitInterval(
                             interval[Object.keys(interval)[0]].UTC[0]
                           )[0][
@@ -70,7 +69,7 @@ const Table = ({ posts }) => {
                     posts.map((dayWithIntervals) =>
                       dayWithIntervals.filter((post) =>
                         sortPost(
-                          post,
+                          post.retrieved_on,
                           getSplitInterval(
                             interval[Object.keys(interval)[0]].UTC[0]
                           )[1][

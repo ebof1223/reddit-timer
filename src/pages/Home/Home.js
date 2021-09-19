@@ -17,13 +17,13 @@ const Home = () => {
     setPosts([]);
     setStatus('loading');
 
-    var lastWeekPostsTimes = [];
+    var lastWeekPosts = [];
 
     for (let dayAfter = 1; dayAfter < lastFullWeek_EPOCH.length; dayAfter++) {
       const dayAfterEpoch = lastFullWeek_EPOCH[dayAfter - 1];
       const dayBeforeEpoch = lastFullWeek_EPOCH[dayAfter];
 
-      var temp = [];
+      var postArray = [];
 
       const url = `https://api.pushshift.io/reddit/search/submission/?subreddit=${subreddit}&after=${dayAfterEpoch}&before=${dayBeforeEpoch}&size=100`;
 
@@ -31,12 +31,21 @@ const Home = () => {
       const { data } = await response.json();
 
       for (let item of data) {
-        temp = [...temp, item.retrieved_on];
+        const { retrieved_on, author, title, score, num_comments, full_link } =
+          item;
+        const postData = {
+          retrieved_on,
+          author,
+          title,
+          score,
+          num_comments,
+          full_link,
+        };
+        postArray = [...postArray, postData];
       }
-
-      lastWeekPostsTimes.push(temp);
+      lastWeekPosts.push(postArray);
     }
-    setPosts([...lastWeekPostsTimes].reverse());
+    setPosts([...lastWeekPosts].reverse());
     setStatus('resolved');
   };
   return (

@@ -8,6 +8,8 @@ const Cell = ({ props }) => {
       ? props.filter((arr) => arr.length)[0].length
       : 0
     : 0;
+
+  console.log(props);
   return <Element postCount={postCount}>{postCount}</Element>;
 };
 
