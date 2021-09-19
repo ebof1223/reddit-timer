@@ -36,6 +36,11 @@ export const Hour = styled.div`
   grid-auto-columns: 1fr;
 `;
 
+export const Section = styled.div`
+  margin-top: 1rem;
+  text-align: center;
+`;
+
 export const Time = styled.div`
   color: #787878;
   font-weight: 600;
