@@ -4,12 +4,14 @@ import Container from 'components/Container';
 import Form from './Form';
 import { Headline, Loader, Section } from './Home.style';
 import Table from 'components/Table';
+import { PostContext } from 'pages/Context/PostContext';
 
 import { lastFullWeek, getEpoch } from 'helpers/getDateInterval';
 
 const Home = () => {
   const [posts, setPosts] = useState([]);
   const [status, setStatus] = useState('idle');
+  const [selectedPost, setSelectedPost] = useState([]);
 
   const lastFullWeek_EPOCH = lastFullWeek.map((date) => getEpoch(date));
 
@@ -48,16 +50,28 @@ const Home = () => {
     setPosts([...lastWeekPosts].reverse());
     setStatus('resolved');
   };
+
+  console.log(selectedPost);
   return (
-    <Container>
-      <Section>
-        <Headline>How active is your subreddit?</Headline>
-        <p>Get the post times of last week for any subreddit!</p>
-        <Form onSearch={onSearch} />
-        {status === 'loading' && <Loader />}
-        {status === 'resolved' && <Table posts={posts} />}
-      </Section>
-    </Container>
+    <PostContext.Provider value={{ selectedPost, setSelectedPost }}>
+      <Container>
+        <Section>
+          <Headline>How active is your subreddit?</Headline>
+          <p>Get the post times of last week for any subreddit!</p>
+          <Form onSearch={onSearch} />
+          {status === 'loading' && <Loader />}
+          {status === 'resolved' && (
+            <>
+              <Table posts={posts} />
+              <Section>
+                All times are shown in your timezone:{' '}
+                {`${Intl.DateTimeFormat().resolvedOptions().timeZone}`}
+              </Section>
+            </>
+          )}
+        </Section>
+      </Container>
+    </PostContext.Provider>
   );
 };
 

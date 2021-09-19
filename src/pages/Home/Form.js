@@ -4,7 +4,7 @@ import Button from 'components/Button';
 import { FormContainer, Input, Label } from './Form.style';
 
 const Form = ({ onSearch }) => {
-  const [subreddit, setSubreddit] = useState('javascript');
+  const [subreddit, setSubreddit] = useState('reactjs');
 
   const onSubmit = (event) => {
     event.preventDefault();

@@ -1,27 +1,27 @@
 import styled from 'styled-components';
 
 export const FormContainer = styled.form`
-  margin: 20px;
-  display: flex;
   align-items: center;
+  display: flex;
   flex-direction: column;
-`;
-
-export const Label = styled.label`
-  font-size: 18px;
+  margin: 20px;
 `;
 
 export const Input = styled.input`
-  width: 370px;
+  border: 1px solid #d5d5d5;
+  color: #000000;
+  font-size: 14px;
   height: 36px;
   margin: 50px;
   padding: 0 15px;
-  font-size: 14px;
-  color: #000000;
-  border: 1px solid #d5d5d5;
+  width: 370px;
 
   :focus,
   :active {
     border: 1px solid #d5d5d5;
   }
+`;
+
+export const Label = styled.label`
+  font-size: 18px;
 `;

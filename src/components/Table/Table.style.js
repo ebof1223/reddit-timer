@@ -5,6 +5,7 @@ export const Day = styled.div`
   background: #1e2537;
   color: #ffffff;
   display: flex;
+  font-weight: 600;
   padding: 14.5px 48.5px;
 `;
 export const Element = styled.div`
@@ -37,6 +38,7 @@ export const Hero = styled.div`
   cursor: default;
   display: grid;
   grid-template-columns: repeat(13, 1fr);
+  transform: scale(0.8);
 `;
 
 export const Hour = styled.div`

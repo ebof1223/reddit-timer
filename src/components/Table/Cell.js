@@ -1,10 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 
 import { Element } from './Table.style';
+import { PostContext } from 'pages/Context/PostContext';
 
-const Cell = ({ props, setSelectedPost, selectedPost }) => {
-  // console.log('render');
+const Cell = ({ props }) => {
   const filteredProps = props.filter((arr) => arr.length);
+
+  const context = useContext(PostContext);
+
+  const { selectedPost, setSelectedPost } = context;
 
   useEffect(() => {
     if (!selectedPost.length) return;
