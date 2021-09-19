@@ -11,27 +11,35 @@ const getHourlyIntervalsPerDay = (increment = 2, day) => {
 
   var hourToHourIntervals = [];
 
-  let start = 0;
-  let end = 1;
-  let startTime = lastWeekDays[day][0];
-  let endTime = lastWeekDays[day][1];
+  let startIdx = 0;
+  let endIdx = 1;
+  let startTime = lastWeekDays[day][startIdx];
+  let endTime = lastWeekDays[day][endIdx];
 
   while (startTime.EPOCH < endTime.EPOCH) {
     let temp = {};
-    let subIntervalHour1 = [startTime.UTC, addHours(startTime.UTC, increment)];
-    let subIntervalHour1_EPOCH = subIntervalHour1.map((hour) => getEpoch(hour));
-    let subIntervalHour2 = [
+
+    const subIntervalHour1 = [
+      startTime.UTC,
+      addHours(startTime.UTC, increment),
+    ];
+    const subIntervalHour1_EPOCH = subIntervalHour1.map((hour) =>
+      getEpoch(hour)
+    );
+    const subIntervalHour2 = [
       subIntervalHour1[1],
       addHours(subIntervalHour1[1], increment),
     ];
-    let subIntervalHour2_EPOCH = subIntervalHour2.map((hour) => getEpoch(hour));
+    const subIntervalHour2_EPOCH = subIntervalHour2.map((hour) =>
+      getEpoch(hour)
+    );
 
-    temp[hourlyIntervals[start]] = {
+    temp[hourlyIntervals[startIdx]] = {
       UTC: subIntervalHour1,
       EPOCH: subIntervalHour1_EPOCH,
     };
 
-    temp[hourlyIntervals[end]] = {
+    temp[hourlyIntervals[endIdx]] = {
       UTC: subIntervalHour2,
       EPOCH: subIntervalHour2_EPOCH,
     };
@@ -40,8 +48,8 @@ const getHourlyIntervalsPerDay = (increment = 2, day) => {
 
     startTime.UTC = addHours(startTime.UTC, increment);
     startTime.EPOCH = getEpoch(startTime.UTC);
-    start++;
-    end++;
+    startIdx++;
+    endIdx++;
   }
 
   const lastInterval = hourToHourIntervals.length - 1;
@@ -67,4 +75,8 @@ const getHourlyIntervalsPerDay = (increment = 2, day) => {
   return hourToHourIntervals;
 };
 
-export default getHourlyIntervalsPerDay;
+const weekDayWithOneHourIntervals = Object.keys(lastWeekDays).map((day) =>
+  getHourlyIntervalsPerDay(2, day)
+);
+
+export default weekDayWithOneHourIntervals;

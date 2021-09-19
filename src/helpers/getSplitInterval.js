@@ -5,17 +5,15 @@ import { getEpoch } from './getDateInterval';
 const getSplitInterval = (interval) => {
   var splitInterval = [];
 
-  const hour1 = interval;
-
-  const startingIntervals = [hour1, addHours(hour1, 1)];
+  const startingIntervals = [interval, addHours(interval, 1)];
 
   for (let time of startingIntervals) {
     let temp = {};
 
-    let UTC = [time, addHours(time, 1)];
-    let EPOCH = UTC.map((time) => getEpoch(time));
+    const UTC = [time, addHours(time, 1)];
+    const EPOCH = UTC.map((time) => getEpoch(time));
 
-    let key = time.getHours();
+    const key = time.getHours();
 
     temp[key] = {
       UTC,

@@ -1,35 +1,37 @@
 import React, { useState } from 'react';
 
-import Container from '../../components/Container';
+import Container from 'components/Container';
 import Form from './Form';
 import { Headline, Section, Status } from './Home.style';
-import Table from '../../components/Table';
+import Table from 'components/Table';
 
-import { lastFullWeek, getEpoch } from '../../helpers/getDateInterval';
+import { lastFullWeek, getEpoch } from 'helpers/getDateInterval';
 
 const Home = () => {
   const [posts, setPosts] = useState([]);
-  const [status, setStatus] = useState('idle');
+  const [status, setStatus] = useState('resolved');
 
   const lastFullWeek_EPOCH = lastFullWeek.map((date) => getEpoch(date));
 
   const onSearch = async (subreddit) => {
     setStatus('loading');
 
-    var lastWeekPosts = [];
+    var lastWeekPostsTimes = [];
 
     for (let dayAfter = 1; dayAfter < lastFullWeek_EPOCH.length; dayAfter++) {
-      let dayAfterEpoch = lastFullWeek_EPOCH[dayAfter - 1];
-      let dayBeforeEpoch = lastFullWeek_EPOCH[dayAfter];
+      const dayAfterEpoch = lastFullWeek_EPOCH[dayAfter - 1];
+      const dayBeforeEpoch = lastFullWeek_EPOCH[dayAfter];
+
+      var temp = [];
 
       const url = `https://api.pushshift.io/reddit/search/submission/?subreddit=${subreddit}&after=${dayAfterEpoch}&before=${dayBeforeEpoch}&size=100`;
-      console.log(url);
+
       const response = await fetch(url);
       const { data } = await response.json();
-      console.log(data);
-      lastWeekPosts = [...lastWeekPosts, data];
+      data.forEach((item) => (temp = [...temp, item.retrieved_on]));
+      lastWeekPostsTimes.push(temp);
     }
-    setPosts([...lastWeekPosts].reverse());
+    setPosts([...lastWeekPostsTimes].reverse());
     setStatus('resolved');
   };
   return (
@@ -41,10 +43,8 @@ const Home = () => {
           subreddit.
         </p>
         <Form onSearch={onSearch} />
-        <Table posts={posts} />
-        {/* add loader */}
-        {/* {status === 'loading' && <Status>Is loading</Status>}
-        {status === 'resolved' && <Table posts={posts} />} */}
+        {status === 'loading' && <Status>Is loading</Status>}
+        {status === 'resolved' && <Table posts={posts} />}
       </Section>
     </Container>
   );

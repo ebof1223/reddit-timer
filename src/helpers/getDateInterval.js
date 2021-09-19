@@ -3,16 +3,10 @@ import isSaturday from 'date-fns/isSaturday';
 import isSunday from 'date-fns/isSunday';
 import startOfDay from 'date-fns/startOfDay';
 
-var today = new Date(Date.now());
-
-const getYesterday = (date) => {
-  let yesterday = new Date(date.getTime());
-  date = endOfDay(new Date(yesterday.setDate(date.getDate() - 1)));
-  return date;
-};
+const today = new Date(Date.now());
 
 const getWeekInterval = (date = today) => {
-  let weekInterval = [];
+  var weekInterval = [];
 
   //finds last saturday
   do {
@@ -32,8 +26,20 @@ const getWeekInterval = (date = today) => {
   return weekInterval;
 };
 
+function getYesterday(date) {
+  const yesterday = new Date(date.getTime());
+  date = endOfDay(new Date(yesterday.setDate(date.getDate() - 1)));
+  return date;
+}
+
 export const lastFullWeek = getWeekInterval();
 
-export const getEpoch = (date) => {
+export function getEpoch(date) {
   return Math.floor(new Date(date).getTime() / 1000);
-};
+}
+
+export function getUTC(utcSeconds) {
+  const date = new Date(0);
+  date.setUTCSeconds(utcSeconds);
+  return date;
+}
