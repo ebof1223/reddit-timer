@@ -9,6 +9,7 @@ import lastWeekDays from 'helpers/getDaysOfTheWeek';
 import weekDayWithOneHourIntervals from 'helpers/getHourlyIntervalsPerDay';
 
 const Table = ({ posts }) => {
+  console.log('render');
   const tableHeaderIntervals = [null, ...getGridHeaderInterval()];
 
   const sortPost = (postTime_EPOCH, interval) => {
@@ -22,7 +23,11 @@ const Table = ({ posts }) => {
     <>
       <Hero>
         {tableHeaderIntervals.map((time) =>
-          time ? <Time key={time}>{time}</Time> : <Time key="blank" />
+          time ? (
+            <Time key={time}>{time}</Time>
+          ) : (
+            <Time key="blank" style={{ background: 'white' }} />
+          )
         )}
 
         {weekDayWithOneHourIntervals.map((pseudoDay, idx) => (

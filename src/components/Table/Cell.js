@@ -1,35 +1,32 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { Element } from './Table.style';
 
 const Cell = ({ props, setSelectedPost, selectedPost }) => {
-  var filteredProps;
-  if (props.length) filteredProps = props.filter((arr) => arr.length);
-  const postCount = props.length
-    ? filteredProps.length
-      ? filteredProps[0].length
-      : 0
-    : 0;
-
-  const [selectedCell, setSelectedCell] = useState(false);
+  // console.log('render');
+  const filteredProps = props.filter((arr) => arr.length);
 
   useEffect(() => {
-    if (selectedPost.length === 0) return;
-    setSelectedCell(
-      JSON.stringify(selectedPost) === JSON.stringify(filteredProps)
+    if (!selectedPost.length) return;
+    setIsSelectedCell(
+      JSON.stringify(selectedPost[0]) === JSON.stringify(filteredProps[0])
     );
   }, [selectedPost, filteredProps]);
 
+  const [isSelectedCell, setIsSelectedCell] = useState(false);
+
+  const postCount = filteredProps.length ? filteredProps[0].length : 0;
+
   const handleClick = () => {
     if (!postCount) return;
-    setSelectedCell(true);
+    setIsSelectedCell(true);
     setSelectedPost([...filteredProps]);
   };
   return (
     <Element
       onClick={handleClick}
       postCount={postCount}
-      selectedCell={selectedCell}
+      isSelectedCell={isSelectedCell}
     >
       {postCount}
     </Element>

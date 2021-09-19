@@ -17,13 +17,14 @@ export const Element = styled.div`
     if (postCount > 0) return '#A9D194';
     return '#E0E5A3';
   }};
-  background: ${({ selectedCell }) => selectedCell && 'rgb(20, 25, 38)'};
+  background: ${({ isSelectedCell }) => isSelectedCell && 'rgb(20, 25, 38)'};
   color: #ffffff;
   cursor: pointer;
   display: flex;
   grid-row: 1/2;
   justify-content: center;
   padding: 15px 25px;
+  transition: background 0.2s ease-in-out 0s;
   width: 70px;
 
   :hover {

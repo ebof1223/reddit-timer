@@ -51,7 +51,7 @@ const Home = () => {
   return (
     <Container>
       <Section>
-        <Headline>No reactions to your reddit posts?</Headline>
+        <Headline>How active is your subreddit?</Headline>
         <p>Get the post times of last week for any subreddit!</p>
         <Form onSearch={onSearch} />
         {status === 'loading' && <Loader />}
