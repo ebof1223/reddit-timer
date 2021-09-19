@@ -11,9 +11,7 @@ const Home = () => {
   const [posts, setPosts] = useState([]);
   const [status, setStatus] = useState('resolved');
 
-  const lastFullWeek_EPOCH = lastFullWeek
-    .slice(lastFullWeek.length - 2)
-    .map((date) => getEpoch(date));
+  const lastFullWeek_EPOCH = lastFullWeek.map((date) => getEpoch(date));
 
   const onSearch = async (subreddit) => {
     setStatus('loading');

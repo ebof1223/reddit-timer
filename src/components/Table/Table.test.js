@@ -6,7 +6,6 @@ import Table from 'components/Table';
 
 import getGridHeaderInterval from 'helpers/getGridHeaderInterval';
 import { weekDays } from 'helpers/getDaysOfTheWeek';
-import userEvent from '@testing-library/user-event';
 
 describe('Table', () => {
   beforeEach(() => {
