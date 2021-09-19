@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import Container from 'components/Container';
 import Form from './Form';
-import { Headline, Section, Status } from './Home.style';
+import { Headline, Loader, Section } from './Home.style';
 import Table from 'components/Table';
 
 import { lastFullWeek, getEpoch } from 'helpers/getDateInterval';
@@ -48,7 +48,7 @@ const Home = () => {
           subreddit.
         </p>
         <Form onSearch={onSearch} />
-        {status === 'loading' && <Status>Is loading</Status>}
+        {status === 'loading' && <Loader />}
         {status === 'resolved' && <Table posts={posts} />}
       </Section>
     </Container>

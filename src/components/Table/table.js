@@ -4,9 +4,9 @@ import Cell from './Cell';
 import { Day, Hero, Hour, Time } from './Table.style';
 
 import getGridHeaderInterval from 'helpers/getGridHeaderInterval';
+import getSplitInterval from 'helpers/getSplitInterval';
 import lastWeekDays from 'helpers/getDaysOfTheWeek';
 import weekDayWithOneHourIntervals from 'helpers/getHourlyIntervalsPerDay';
-import getSplitInterval from 'helpers/getSplitInterval';
 
 const Table = ({ posts }) => {
   const tableHeaderIntervals = [null, ...getGridHeaderInterval()];
