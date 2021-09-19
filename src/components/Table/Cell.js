@@ -1,5 +1,4 @@
-import { daysToWeeks } from 'date-fns';
-import React, { useState } from 'react';
+import React from 'react';
 
 import { Element } from './Table.style';
 
@@ -10,7 +9,7 @@ const Cell = ({ props }) => {
       : 0
     : 0;
 
-  return <Element>{postCount}</Element>;
+  return <Element props={postCount}>{postCount}</Element>;
 };
 
 export default Cell;

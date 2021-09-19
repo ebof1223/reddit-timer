@@ -14,6 +14,7 @@ const Home = () => {
   const lastFullWeek_EPOCH = lastFullWeek.map((date) => getEpoch(date));
 
   const onSearch = async (subreddit) => {
+    setPosts([]);
     setStatus('loading');
 
     var lastWeekPostsTimes = [];
@@ -28,7 +29,11 @@ const Home = () => {
 
       const response = await fetch(url);
       const { data } = await response.json();
-      data.forEach((item) => (temp = [...temp, item.retrieved_on]));
+
+      for (let item of data) {
+        temp = [...temp, item.retrieved_on];
+      }
+
       lastWeekPostsTimes.push(temp);
     }
     setPosts([...lastWeekPostsTimes].reverse());
