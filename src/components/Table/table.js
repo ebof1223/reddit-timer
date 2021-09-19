@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import Cell from './Cell';
 import { Day, Hero, Hour, Section, Time } from './Table.style';
@@ -14,6 +14,9 @@ const Table = ({ posts }) => {
   const sortPost = (postTime_EPOCH, interval) => {
     return postTime_EPOCH >= interval[0] && postTime_EPOCH <= interval[1];
   };
+
+  // usecontext
+  const [selectedPost, setSelectedPost] = useState([]);
 
   return (
     <>
@@ -34,7 +37,7 @@ const Table = ({ posts }) => {
                   Object.keys(interval)[0]
                 }`}
               >
-                {/* props are the posts times that within the the respective cells interval*/}
+                {/* props are the posts that fall within the the respective cells interval*/}
                 <Cell
                   key={`${Object.keys(lastWeekDays)[idx]}-${
                     Object.keys(interval)[0]
@@ -58,6 +61,8 @@ const Table = ({ posts }) => {
                       )
                     )
                   }
+                  setSelectedPost={setSelectedPost}
+                  selectedPost={selectedPost}
                 />
 
                 <Cell
@@ -83,6 +88,8 @@ const Table = ({ posts }) => {
                       )
                     )
                   }
+                  setSelectedPost={setSelectedPost}
+                  selectedPost={selectedPost}
                 />
               </Hour>
             ))}

@@ -9,7 +9,7 @@ import { lastFullWeek, getEpoch } from 'helpers/getDateInterval';
 
 const Home = () => {
   const [posts, setPosts] = useState([]);
-  const [status, setStatus] = useState('resolved');
+  const [status, setStatus] = useState('idle');
 
   const lastFullWeek_EPOCH = lastFullWeek.map((date) => getEpoch(date));
 
@@ -52,10 +52,7 @@ const Home = () => {
     <Container>
       <Section>
         <Headline>No reactions to your reddit posts?</Headline>
-        <p>
-          Great timing, great results! Find the best time to post on your
-          subreddit.
-        </p>
+        <p>Get the post times of last week for any subreddit!</p>
         <Form onSearch={onSearch} />
         {status === 'loading' && <Loader />}
         {status === 'resolved' && <Table posts={posts} />}

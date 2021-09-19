@@ -13,7 +13,7 @@ const Form = ({ onSearch }) => {
 
   return (
     <FormContainer onSubmit={onSubmit}>
-      <Button type="submit">Show me the best time</Button>
+      <Button type="submit">Show me the posts </Button>
       <Label>
         r /
         <Input
