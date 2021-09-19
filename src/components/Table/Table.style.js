@@ -16,12 +16,12 @@ export const Element = styled.div`
     if (postCount > 3) return '#A9D194';
     return '#E0E5A3';
   }};
-  border: 1px solid black;
-  cursor: pointer;
+  align-items: center;
   color: #ffffff;
+  display: flex;
   grid-row: 1/2;
-  padding: 0.9rem 1.5rem;
-  width: 100%;
+  justify-content: center;
+  padding: 0 25px;
 `;
 
 export const Hero = styled.div`
@@ -29,17 +29,17 @@ export const Hero = styled.div`
   cursor: default;
   display: grid;
   grid-template-columns: repeat(13, 1fr);
-  grid-template-rows: 8fr;
 `;
 
 export const Hour = styled.div`
   display: grid;
+  grid-auto-columns: 1fr;
 `;
 
 export const Time = styled.div`
-  padding: 1rem;
   color: #787878;
   font-weight: 600;
   font-size: 14px;
+  padding: 1rem;
   text-align: center;
 `;
