@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 
 import { Element } from './Table.style';
 import { PostContext } from 'pages/Context/PostContext';
@@ -26,6 +26,7 @@ const Cell = ({ props }) => {
     setIsSelectedCell(true);
     setSelectedPost([...filteredProps]);
   };
+
   return (
     <Element
       onClick={handleClick}

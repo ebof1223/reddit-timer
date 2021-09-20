@@ -13,7 +13,7 @@ const Form = ({ onSearch }) => {
 
   return (
     <FormContainer onSubmit={onSubmit}>
-      <Button type="submit">Show me the posts </Button>
+      <Button type="submit">Show me the posts</Button>
       <Label>
         <span>r /</span>
         <Input

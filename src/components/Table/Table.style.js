@@ -64,15 +64,6 @@ export const Hour = styled.div`
   display: grid;
 `;
 
-export const Time = styled.div`
-  background: linear-gradient(180deg, #fefefe 0%, #e9e9e9 100%);
-  color: #787878;
-  font-weight: 600;
-  font-size: 14px;
-  text-align: center;
-  padding: 3px;
-`;
-
 export const Meridian = styled.span`
   display: none;
   ${mediaQuery(
@@ -82,7 +73,6 @@ export const Meridian = styled.span`
     `
   )}
 `;
-
 export const Suffix = styled.span`
   display: none;
   ${mediaQuery(
@@ -91,4 +81,12 @@ export const Suffix = styled.span`
       display: inline-block;
     `
   )}
+`;
+export const Time = styled.div`
+  background: linear-gradient(180deg, #fefefe 0%, #e9e9e9 100%);
+  color: #787878;
+  font-weight: 600;
+  font-size: 14px;
+  text-align: center;
+  padding: 3px;
 `;
