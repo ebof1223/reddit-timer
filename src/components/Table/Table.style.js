@@ -46,7 +46,18 @@ export const Hero = styled.article`
   cursor: default;
   display: grid;
   grid-template-columns: repeat(13, 1fr);
-  margin: 0 auto;
+  margin-bottom: -50px;
+  margin-top: -100px;
+  transform: scale(0.6);
+  transform-origin: center;
+
+  ${mediaQuery(
+    breakpoint.md,
+    css`
+      margin: 0 auto;
+      transform: scale(1);
+    `
+  )}
 `;
 
 export const Hour = styled.div`

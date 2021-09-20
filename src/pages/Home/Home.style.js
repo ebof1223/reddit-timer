@@ -47,4 +47,6 @@ export const Section = styled.article`
   margin: 0 auto;
   max-width: 69.688em;
   width: 100%;
+  overflow: hidden;
+  text-align: center;
 `;
