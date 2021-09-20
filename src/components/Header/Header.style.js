@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 import { ReactComponent } from './logo.svg';
 
 export const Container = styled.header`
@@ -14,10 +13,4 @@ export const Container = styled.header`
 
 export const Logo = styled(ReactComponent)`
   margin-top: 8px;
-`;
-
-export const NavLink = styled(Link)`
-  margin-left: 26px;
-  text-decoration: none;
-  color: #636363;
 `;
