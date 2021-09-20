@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 
 import Cell from './Cell';
-import { Day, Hero, Hour, Time } from './Table.style';
+import { Day, Hero, Hour, Meridian, Suffix, Time } from './Table.style';
 
 import getGridHeaderInterval from 'helpers/getGridHeaderInterval';
 import getSplitInterval from 'helpers/getSplitInterval';
@@ -19,7 +19,10 @@ const Table = ({ posts }) => {
     <Hero>
       {tableHeaderIntervals.map((time) =>
         time ? (
-          <Time key={time}>{time}</Time>
+          <Time key={time}>
+            {time.slice(0, 5)}
+            <Meridian>{time.slice(5)}</Meridian>
+          </Time>
         ) : (
           <Time key="blank" style={{ background: '#fff' }} />
         )
@@ -28,7 +31,8 @@ const Table = ({ posts }) => {
       {weekDayWithOneHourIntervals.map((pseudoDay, idx) => (
         <Fragment key={`${Object.keys(lastWeekDays)[idx]}`}>
           <Day key={`${Object.keys(lastWeekDays)[idx]}-row${idx}`}>
-            {Object.keys(lastWeekDays)[idx]}
+            {Object.keys(lastWeekDays)[idx].slice(0, 3)}
+            <Suffix>{Object.keys(lastWeekDays)[idx].slice(3)}</Suffix>
           </Day>
           {pseudoDay.map((interval) => (
             <Hour

@@ -1,8 +1,17 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { breakpoint, mediaQuery } from 'styles/media_query';
 
-export const Container = styled.div`
-  width: 100%;
-  max-width: 778px;
-  margin: auto;
-  padding: 0 20px;
+export const Container = styled.main`
+  padding: 0 1.25rem; /* 20px */
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+
+  ${mediaQuery(
+    breakpoint.xl,
+    css`
+      margin: 0 auto;
+      max-width: 90rem; /* 1440px */
+    `
+  )}
 `;

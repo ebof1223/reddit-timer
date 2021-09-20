@@ -1,4 +1,6 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { breakpoint, mediaQuery } from 'styles/media_query';
+
 import { ReactComponent } from './logo.svg';
 
 export const Container = styled.header`
@@ -8,7 +10,15 @@ export const Container = styled.header`
   padding: 0 80px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  -moz-box-pack: justify;
+
+  ${mediaQuery(
+    breakpoint.md,
+    css`
+      justify-content: space-between;
+    `
+  )}
 `;
 
 export const Logo = styled(ReactComponent)`

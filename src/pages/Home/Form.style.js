@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { breakpoint, mediaQuery } from 'styles/media_query';
 
 export const FormContainer = styled.form`
   align-items: center;
@@ -22,6 +23,15 @@ export const Input = styled.input`
   }
 `;
 
-export const Label = styled.label`
-  font-size: 18px;
+export const Label = styled.div`
+  span {
+    display: none;
+    ${mediaQuery(
+      breakpoint.md,
+      css`
+        display: inline-block;
+        font-size: 1rem;
+      `
+    )}
+  }
 `;

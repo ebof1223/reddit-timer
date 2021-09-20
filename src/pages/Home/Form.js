@@ -15,7 +15,7 @@ const Form = ({ onSearch }) => {
     <FormContainer onSubmit={onSubmit}>
       <Button type="submit">Show me the posts </Button>
       <Label>
-        r /
+        <span>r /</span>
         <Input
           type="text"
           name="subreddit"

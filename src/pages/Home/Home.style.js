@@ -40,11 +40,11 @@ export const Loader = styled.article`
     }
   }
 `;
-export const Section = styled.section`
+export const Section = styled.article`
   display: flex;
   flex-direction: column;
   align-items: center;
-`;
-export const TopPosts = styled.section`
-  margin-top: 40px;
+  margin: 0 auto;
+  max-width: 69.688em;
+  width: 100%;
 `;
