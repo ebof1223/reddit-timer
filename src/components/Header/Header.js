@@ -6,14 +6,7 @@ import { Container, Logo, NavLink } from './Header.style';
 const Header = () => {
   return (
     <Container as="header">
-      <Link to="/">
-        <Logo />
-      </Link>
-
-      <nav>
-        <NavLink to="/how-it-works">How it works</NavLink>
-        <NavLink to="/about">About</NavLink>
-      </nav>
+      <Logo />
     </Container>
   );
 };

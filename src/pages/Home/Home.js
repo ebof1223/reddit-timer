@@ -64,10 +64,12 @@ const Home = () => {
           {status === 'resolved' && (
             <>
               <Table posts={posts} />
-              <Section as="p">
-                All times are shown in your timezone:{' '}
-                {`${Intl.DateTimeFormat().resolvedOptions().timeZone}`}
-              </Section>
+              <p>
+                All times are shown in your timezone:
+                <strong>
+                  {` ${Intl.DateTimeFormat().resolvedOptions().timeZone}`}
+                </strong>
+              </p>
             </>
           )}
         </Section>

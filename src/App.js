@@ -12,17 +12,7 @@ const App = () => {
 
       <main>
         <Header />
-        <Switch>
-          <Route path="/how-it-works">
-            <h1>How it works</h1>
-          </Route>
-          <Route path="/about">
-            <h1>About</h1>
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
-        </Switch>
+        <Home />
       </main>
     </>
   );
