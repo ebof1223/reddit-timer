@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import Container from 'components/Container';
+import Posts from 'components/Posts';
 import Form from './Form';
 import { Headline, Loader, Section } from './Home.style';
 import Table from 'components/Table';
@@ -54,22 +55,23 @@ const Home = () => {
   console.log(selectedPost);
   return (
     <PostContext.Provider value={{ selectedPost, setSelectedPost }}>
-      <Container>
+      <Container as="article">
         <Section>
-          <Headline>How active is your subreddit?</Headline>
-          <p>Get the post times of last week for any subreddit!</p>
+          <Headline>Find how active your subreddit is!</Headline>
+          <p>Get last week's posts for any subreddit</p>
           <Form onSearch={onSearch} />
           {status === 'loading' && <Loader />}
           {status === 'resolved' && (
             <>
               <Table posts={posts} />
-              <Section>
+              <Section as="p">
                 All times are shown in your timezone:{' '}
                 {`${Intl.DateTimeFormat().resolvedOptions().timeZone}`}
               </Section>
             </>
           )}
         </Section>
+        {selectedPost.length > 0 && <Posts />}
       </Container>
     </PostContext.Provider>
   );

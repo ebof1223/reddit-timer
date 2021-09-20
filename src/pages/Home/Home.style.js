@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Headline = styled.h1`
   margin: 18px 0 0;
 `;
-export const Loader = styled.div`
+export const Loader = styled.article`
   animation-duration: 1s;
   animation-iteration-count: infinite;
   animation-name: rotate;

@@ -9,9 +9,9 @@ const App = () => {
   return (
     <>
       <GlobalStyle />
-      <Header />
 
       <main>
+        <Header />
         <Switch>
           <Route path="/how-it-works">
             <h1>How it works</h1>

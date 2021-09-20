@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 import Cell from './Cell';
 import { Day, Hero, Hour, Time } from './Table.style';
@@ -26,11 +26,10 @@ const Table = ({ posts }) => {
       )}
 
       {weekDayWithOneHourIntervals.map((pseudoDay, idx) => (
-        <React.Fragment key={`${Object.keys(lastWeekDays)[idx]}`}>
+        <Fragment key={`${Object.keys(lastWeekDays)[idx]}`}>
           <Day key={`${Object.keys(lastWeekDays)[idx]}-row${idx}`}>
             {Object.keys(lastWeekDays)[idx]}
           </Day>
-
           {pseudoDay.map((interval) => (
             <Hour
               key={`${Object.keys(lastWeekDays)[idx]}-${
@@ -89,7 +88,7 @@ const Table = ({ posts }) => {
               />
             </Hour>
           ))}
-        </React.Fragment>
+        </Fragment>
       ))}
     </Hero>
   );

@@ -18,6 +18,7 @@ export const Element = styled.div`
     if (postCount > 0) return '#A9D194';
     return '#E0E5A3';
   }};
+
   background: ${({ isSelectedCell }) => isSelectedCell && 'rgb(20, 25, 38)'};
   color: #ffffff;
   cursor: pointer;
