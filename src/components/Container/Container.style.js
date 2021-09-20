@@ -1,11 +1,12 @@
 import styled, { css } from 'styled-components';
+
 import { breakpoint, mediaQuery } from 'styles/media_query';
 
 export const Container = styled.main`
-  padding: 0 1.25rem; /* 20px */
   display: flex;
-  min-height: 100vh;
   flex-direction: column;
+  min-height: 100vh;
+  padding: 0 1.25rem; /* 20px */
 
   ${mediaQuery(
     breakpoint.xl,

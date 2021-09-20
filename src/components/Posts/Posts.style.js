@@ -4,12 +4,12 @@ export const Container = styled.article`
   border: 1px solid rgb(221, 221, 221);
   margin-bottom: 2rem;
 `;
-export const Title = styled.h1`
-  text-align: left;
-  font-size: 1.5em;
+export const HeaderRow = styled.div`
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
 `;
 
-export const Table = styled.div``;
+export const PostRow = styled(HeaderRow)``;
 
 export const Post = styled.div`
   color: black;
@@ -34,9 +34,9 @@ export const Label = styled(Post)`
   font-weight: 600;
 `;
 
-export const HeaderRow = styled.div`
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-`;
+export const Table = styled.div``;
 
-export const PostRow = styled(HeaderRow)``;
+export const Title = styled.h1`
+  text-align: left;
+  font-size: 1.5em;
+`;

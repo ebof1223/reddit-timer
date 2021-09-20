@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
-import Posts from 'components/Posts';
 import Form from './Form';
+import Posts from 'components/Posts';
 import { Headline, Loader, Section } from './Home.style';
 import Table from 'components/Table';
 import { PostContext } from 'pages/Context/PostContext';

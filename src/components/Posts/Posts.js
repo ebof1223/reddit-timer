@@ -10,16 +10,15 @@ import {
   Title,
 } from './Posts.style';
 
-import { PostContext } from 'pages/Context/PostContext';
-import { getUTC } from 'helpers/getDateInterval';
 import getDateConvert from 'helpers/getDateConvert';
+import { getUTC } from 'helpers/getDateInterval';
+import { PostContext } from 'pages/Context/PostContext';
 
 const Posts = () => {
   const context = useContext(PostContext);
 
   const { selectedPost } = context;
 
-  console.log(selectedPost);
   return (
     <>
       <Title>Posts</Title>
