@@ -56,7 +56,12 @@ const Home = () => {
     <PostContext.Provider value={{ selectedPost, setSelectedPost }}>
       <Section>
         <Headline>Find how active your subreddit is!</Headline>
-        <p>Get last week's posts for any subreddit</p>
+        <p>
+          Disclaimer: The API I used capped me at 100 posts per request, so each
+          table only lists up to 700 posts in a given week. This likely means
+          that only small to moderately sized subreddits will generate an
+          accurate heatmap.{' '}
+        </p>
         <Form onSearch={onSearch} />
         {status === 'loading' && <Loader />}
         {status === 'resolved' && (
