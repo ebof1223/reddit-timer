@@ -1,4 +1,20 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
+import { breakpoint, mediaQuery } from 'styles/media_query';
+
+const getBackgroundColorOfHour = (hourCount) =>
+  ({
+    0: '#E0E592',
+    1: '#AED396',
+    2: '#A9D194',
+    3: '#A0CE93',
+    4: '#99CD94',
+    5: '#8CC894',
+    6: '#5EB391',
+    7: '#5DB492',
+    8: '#5CB391',
+    9: '#5AAD8C',
+  }[hourCount] || '#3984A3');
 
 export const Day = styled.div`
   align-items: center;
@@ -6,18 +22,11 @@ export const Day = styled.div`
   color: #ffffff;
   display: flex;
   font-weight: 600;
-  padding: 14.5px 48.5px;
+  padding: 0.5rem 1rem;
 `;
 export const Element = styled.div`
   align-items: center;
-  background: ${({ postCount }) => {
-    if (postCount > 10) return '#3984A3';
-    if (postCount > 8) return '#5AAD8C';
-    if (postCount > 6) return '#5EB391';
-    if (postCount > 5) return '#8CC894';
-    if (postCount > 0) return '#A9D194';
-    return '#E0E5A3';
-  }};
+  background: ${({ postCount }) => getBackgroundColorOfHour(postCount)};
 
   background: ${({ isSelectedCell }) => isSelectedCell && 'rgb(20, 25, 38)'};
   color: #ffffff;
@@ -25,30 +34,34 @@ export const Element = styled.div`
   display: flex;
   grid-row: 1/2;
   justify-content: center;
-  padding: 15px 25px;
   transition: background 0.2s ease-in-out 0s;
-  width: 70px;
 
   :hover {
     background: rgb(20, 25, 38);
   }
 `;
 
-export const Hero = styled.div`
+export const Hero = styled.article`
   background: linear-gradient(180deg, #fefefe 0%, #e9e9e9 100%);
   cursor: default;
   display: grid;
   grid-template-columns: repeat(13, 1fr);
-  transform: scale(0.8);
+  margin-bottom: -50px;
+  margin-top: -100px;
+  transform: scale(0.6);
+  transform-origin: center;
+
+  ${mediaQuery(
+    breakpoint.md,
+    css`
+      margin: 0 auto;
+      transform: scale(1);
+    `
+  )}
 `;
 
 export const Hour = styled.div`
   display: grid;
-`;
-
-export const Section = styled.div`
-  margin-top: 1rem;
-  text-align: center;
 `;
 
 export const Time = styled.div`
@@ -56,6 +69,26 @@ export const Time = styled.div`
   color: #787878;
   font-weight: 600;
   font-size: 14px;
-  padding: 1rem;
   text-align: center;
+  padding: 3px;
+`;
+
+export const Meridian = styled.span`
+  display: none;
+  ${mediaQuery(
+    breakpoint.lg,
+    css`
+      display: inline-block;
+    `
+  )}
+`;
+
+export const Suffix = styled.span`
+  display: none;
+  ${mediaQuery(
+    breakpoint.lg,
+    css`
+      display: inline-block;
+    `
+  )}
 `;
