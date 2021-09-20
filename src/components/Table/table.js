@@ -1,7 +1,7 @@
-import React, { useRef, useState } from 'react';
+import React, { Fragment } from 'react';
 
 import Cell from './Cell';
-import { Day, Hero, Hour, Section, Time } from './Table.style';
+import { Day, Hero, Hour, Time } from './Table.style';
 
 import getGridHeaderInterval from 'helpers/getGridHeaderInterval';
 import getSplitInterval from 'helpers/getSplitInterval';
@@ -9,7 +9,6 @@ import lastWeekDays from 'helpers/getDaysOfTheWeek';
 import weekDayWithOneHourIntervals from 'helpers/getHourlyIntervalsPerDay';
 
 const Table = ({ posts }) => {
-  const [postCountSpread, setPostCountSpread] = useState([]);
   const tableHeaderIntervals = [null, ...getGridHeaderInterval()];
 
   const sortPost = (postTime_EPOCH, interval) => {
@@ -17,84 +16,81 @@ const Table = ({ posts }) => {
   };
 
   return (
-    <>
-      <Hero>
-        {tableHeaderIntervals.map((time) =>
-          time ? <Time key={time}>{time}</Time> : <Time key="blank" />
-        )}
+    <Hero>
+      {tableHeaderIntervals.map((time) =>
+        time ? (
+          <Time key={time}>{time}</Time>
+        ) : (
+          <Time key="blank" style={{ background: '#fff' }} />
+        )
+      )}
 
-        {weekDayWithOneHourIntervals.map((pseudoDay, idx) => (
-          <React.Fragment key={`${Object.keys(lastWeekDays)[idx]}`}>
-            <Day key={`${Object.keys(lastWeekDays)[idx]}-row${idx}`}>
-              {Object.keys(lastWeekDays)[idx]}
-            </Day>
-
-            {pseudoDay.map((interval) => (
-              <Hour
+      {weekDayWithOneHourIntervals.map((pseudoDay, idx) => (
+        <Fragment key={`${Object.keys(lastWeekDays)[idx]}`}>
+          <Day key={`${Object.keys(lastWeekDays)[idx]}-row${idx}`}>
+            {Object.keys(lastWeekDays)[idx]}
+          </Day>
+          {pseudoDay.map((interval) => (
+            <Hour
+              key={`${Object.keys(lastWeekDays)[idx]}-${
+                Object.keys(interval)[0]
+              }`}
+            >
+              {/* props are the posts that fall within the the respective cells interval*/}
+              <Cell
                 key={`${Object.keys(lastWeekDays)[idx]}-${
                   Object.keys(interval)[0]
-                }`}
-              >
-                {/* props are the posts times that within the the respective cells interval*/}
-                <Cell
-                  key={`${Object.keys(lastWeekDays)[idx]}-${
-                    Object.keys(interval)[0]
-                  }-hour1`}
-                  props={
-                    posts.length &&
-                    posts.map((dayWithIntervals) =>
-                      dayWithIntervals.filter((post) =>
-                        sortPost(
-                          post,
-                          getSplitInterval(
-                            interval[Object.keys(interval)[0]].UTC[0]
-                          )[0][
-                            Object.keys(
-                              getSplitInterval(
-                                interval[Object.keys(interval)[0]].UTC[0]
-                              )[0]
-                            )
-                          ].EPOCH
-                        )
+                }-hour1`}
+                props={
+                  posts.length &&
+                  posts.map((dayWithIntervals) =>
+                    dayWithIntervals.filter((post) =>
+                      sortPost(
+                        post.retrieved_on,
+                        getSplitInterval(
+                          interval[Object.keys(interval)[0]].UTC[0]
+                        )[0][
+                          Object.keys(
+                            getSplitInterval(
+                              interval[Object.keys(interval)[0]].UTC[0]
+                            )[0]
+                          )
+                        ].EPOCH
                       )
                     )
-                  }
-                />
+                  )
+                }
+              />
 
-                <Cell
-                  key={`${Object.keys(lastWeekDays)[idx]}-${
-                    Object.keys(interval)[0]
-                  }-hour2`}
-                  props={
-                    posts.length &&
-                    posts.map((dayWithIntervals) =>
-                      dayWithIntervals.filter((post) =>
-                        sortPost(
-                          post,
-                          getSplitInterval(
-                            interval[Object.keys(interval)[0]].UTC[0]
-                          )[1][
-                            Object.keys(
-                              getSplitInterval(
-                                interval[Object.keys(interval)[0]].UTC[0]
-                              )[1]
-                            )
-                          ].EPOCH
-                        )
+              <Cell
+                key={`${Object.keys(lastWeekDays)[idx]}-${
+                  Object.keys(interval)[0]
+                }-hour2`}
+                props={
+                  posts.length &&
+                  posts.map((dayWithIntervals) =>
+                    dayWithIntervals.filter((post) =>
+                      sortPost(
+                        post.retrieved_on,
+                        getSplitInterval(
+                          interval[Object.keys(interval)[0]].UTC[0]
+                        )[1][
+                          Object.keys(
+                            getSplitInterval(
+                              interval[Object.keys(interval)[0]].UTC[0]
+                            )[1]
+                          )
+                        ].EPOCH
                       )
                     )
-                  }
-                />
-              </Hour>
-            ))}
-          </React.Fragment>
-        ))}
-      </Hero>
-      <Section>
-        All times are shown in your timezone:{' '}
-        {`${Intl.DateTimeFormat().resolvedOptions().timeZone}`}
-      </Section>
-    </>
+                  )
+                }
+              />
+            </Hour>
+          ))}
+        </Fragment>
+      ))}
+    </Hero>
   );
 };
 

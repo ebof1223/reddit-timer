@@ -5,23 +5,33 @@ export const Day = styled.div`
   background: #1e2537;
   color: #ffffff;
   display: flex;
+  font-weight: 600;
   padding: 14.5px 48.5px;
 `;
 export const Element = styled.div`
+  align-items: center;
   background: ${({ postCount }) => {
-    if (postCount > 15) return '#3984A3';
-    if (postCount > 12) return '#5AAD8C';
-    if (postCount > 9) return '#5EB391';
-    if (postCount > 6) return '#8CC894';
-    if (postCount > 3) return '#A9D194';
+    if (postCount > 10) return '#3984A3';
+    if (postCount > 8) return '#5AAD8C';
+    if (postCount > 6) return '#5EB391';
+    if (postCount > 5) return '#8CC894';
+    if (postCount > 0) return '#A9D194';
     return '#E0E5A3';
   }};
-  align-items: center;
+
+  background: ${({ isSelectedCell }) => isSelectedCell && 'rgb(20, 25, 38)'};
   color: #ffffff;
+  cursor: pointer;
   display: flex;
   grid-row: 1/2;
   justify-content: center;
-  padding: 0 25px;
+  padding: 15px 25px;
+  transition: background 0.2s ease-in-out 0s;
+  width: 70px;
+
+  :hover {
+    background: rgb(20, 25, 38);
+  }
 `;
 
 export const Hero = styled.div`
@@ -29,11 +39,11 @@ export const Hero = styled.div`
   cursor: default;
   display: grid;
   grid-template-columns: repeat(13, 1fr);
+  transform: scale(0.8);
 `;
 
 export const Hour = styled.div`
   display: grid;
-  grid-auto-columns: 1fr;
 `;
 
 export const Section = styled.div`
@@ -42,6 +52,7 @@ export const Section = styled.div`
 `;
 
 export const Time = styled.div`
+  background: linear-gradient(180deg, #fefefe 0%, #e9e9e9 100%);
   color: #787878;
   font-weight: 600;
   font-size: 14px;
