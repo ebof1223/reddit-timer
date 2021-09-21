@@ -1,10 +1,11 @@
 import React from 'react';
 import { render } from '@testing-library/react';
+
 import Home from 'pages/Home';
 
-describe('page content before searching a subreddit', () => {
+describe('Page content before search', () => {
   test('should display correct heading', () => {
-    const { getByRole, debug } = render(<Home />);
+    const { getByRole } = render(<Home />);
     const title = getByRole('heading', {
       name: /find how active your subreddit is!/i,
     });
