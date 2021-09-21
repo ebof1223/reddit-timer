@@ -12,7 +12,7 @@ A social media analytical tool that scrapes posts from the last full week with r
 - Selecting any cell on the heatmap renders a table containing every post appropriate to the time interval, including additional meta data such as author and comment count and hyperlinks to them.
 
 # Technologies
-React | JavaScript | Styled Components | pushshift.io API
+React | JavaScript | Styled Components | React Testing Library | Jest | Pushshift.io API
 
 # Issues
 Search Speed
