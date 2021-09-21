@@ -12,7 +12,13 @@ const Form = ({ onSearch }) => {
   };
 
   return (
-    <FormContainer onSubmit={onSubmit}>
+    <FormContainer
+      onSubmit={onSubmit}
+      autocomplete="off"
+      autocorrect="off"
+      autocapitalize="off"
+      spellcheck="false"
+    >
       <Button type="submit">Show me the posts</Button>
       <Label>
         <span>r /</span>
