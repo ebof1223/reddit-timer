@@ -1,68 +1,27 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+//link
 
-## Available Scripts
+![alt text](https://github.com/ebof1223/reddit-timer/resources/snapshot.jpg?raw=true)
 
-In the project directory, you can run:
+#Reddit Timer
+A social media analytical tool that scrapes posts from the last full week with respect to present day and distributes in an interactive heatmap.
 
-### `yarn start`
+#Features
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Allows user to scrape post meta data across any reddit community
+- User interactive heatmap that display exactly what time of the day any posts has been submitted.
+- Selecting any cell on the heatmap renders a table containing every post appropriate to the time interval, including additional meta data such as author and comment count and hyperlinks to them.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+#Technologies
+React | JavaScript | Styled Components | pushshift.io API
 
-### `yarn test`
+#Issues
+Search Speed
+The search feature isnt as quick as I would have like it. This is because there was quite a bit of logic that went into grabbing the last full week from the user's present day and splitting it into one hour segments. On top of that, when the fetch request is submitted, it then gets parsed by it's post time and sorted into any cell containing the correct interval. The renders seem to be optimal, there is a re-render of 128 cells so that also likely plays a part in the search time. In conclusion, I'd bet that this speed is due to considerable amount of logic that went into it. Optimizing the logic would be the best way to increate the speed in my opinion.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Latency with Selecting Cells
+There's a small latency when selecting between different time intervals: It's not unnoticeable but it's not unusable either. This is because the onClick event that manages the state of whether or not a cell is selected only true: theres a useEffect takes event to verify that the object of the cell thats selected is idential to the object that is selected in the parent component. This leads to a useEffect taking place in every cell, which causes there to be a bit of latency. This was just the solution that I came up with for this particular problem so there may be a more optimal solution out there.
 
-### `yarn build`
+Request Cap
+The biggest flaw with this tool is that the API caps any get request to 100 posts, which I didnt realize until I created all the logic for retrieving it (the documentation said the cap was 500 posts). The best I could do without completeley overhauling my logic was to loop over every day of the week and make 100 requests per day. Unfortunately this means that the heatmap won't accurately generate the posts of a subreddit that usually or happens to have over 700 posts of the past week. It works as expected for moderately sized ones, but bigger ones such as r/askreddit won't give an accurate heatmap.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Full Disclosure: This project was inspired by Johannes over at profy.dev. It's a project he builds from scratch in one of his courses and I thought it was pretty interesting so I decided to give it a try. Since I didn't want to shell out the money for access to the entire course, I took the figma design and the basic functionality of the finished product and implemented it on my own.
