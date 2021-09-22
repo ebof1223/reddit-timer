@@ -19,7 +19,7 @@ const Form = ({ onSearch }) => {
       autocapitalize="off"
       spellcheck="false"
     >
-      <Button type="submit">Show me the posts</Button>
+      <Button type="submit">Get me last week's posts</Button>
       <Label>
         <span>r /</span>
         <Input

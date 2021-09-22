@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 import Form from './Form';
 import Posts from 'components/Posts';
@@ -13,13 +14,14 @@ const Home = () => {
   const [status, setStatus] = useState('idle');
   const [selectedPost, setSelectedPost] = useState([]);
 
-  const lastFullWeek_EPOCH = lastFullWeek.map((date) => getEpoch(date));
+  const lastFullWeek_EPOCH = lastFullWeek
+    .slice(lastFullWeek.length - 2)
+    .map((date) => getEpoch(date));
 
   const onSearch = async (subreddit) => {
     setPosts([]);
     setSelectedPost([]);
     setStatus('loading');
-
     var lastWeekPosts = [];
 
     for (let dayAfter = 1; dayAfter < lastFullWeek_EPOCH.length; dayAfter++) {
@@ -30,10 +32,8 @@ const Home = () => {
 
       const url = `https://api.pushshift.io/reddit/search/submission/?subreddit=${subreddit}&after=${dayAfterEpoch}&before=${dayBeforeEpoch}&size=100`;
 
-      const response = await fetch(url);
-      const { data } = await response.json();
-
-      for (let item of data) {
+      const { data } = await axios.get(url);
+      for (let item of data.data) {
         const { retrieved_on, author, title, score, num_comments, full_link } =
           item;
         const postData = {
@@ -48,6 +48,7 @@ const Home = () => {
       }
       lastWeekPosts.push(postArray);
     }
+
     setPosts([...lastWeekPosts].reverse());
     setStatus('resolved');
   };
@@ -66,7 +67,7 @@ const Home = () => {
         {status === 'loading' && <Loader />}
         {status === 'resolved' && (
           <>
-            <Table posts={posts} />
+            <Table data-testid="table" posts={posts} />
             <p>
               All times are shown in your timezone:
               <strong>

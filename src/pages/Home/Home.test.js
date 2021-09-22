@@ -3,7 +3,7 @@ import { render } from '@testing-library/react';
 
 import Home from 'pages/Home';
 
-describe('Page content before search', () => {
+describe('Page content without search', () => {
   test('should display correct heading', () => {
     const { getByRole } = render(<Home />);
     const title = getByRole('heading', {
@@ -22,7 +22,9 @@ describe('Page content before search', () => {
 
   test('should display button', () => {
     const { getByRole } = render(<Home />);
-    const button = getByRole('button', { name: /show me the posts/i });
+    const button = getByRole('button', {
+      name: /Get me last week's posts/i,
+    });
 
     expect(button).toBeTruthy();
   });
