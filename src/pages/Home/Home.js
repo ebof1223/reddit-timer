@@ -14,9 +14,7 @@ const Home = () => {
   const [status, setStatus] = useState('idle');
   const [selectedPost, setSelectedPost] = useState([]);
 
-  const lastFullWeek_EPOCH = lastFullWeek
-    .slice(lastFullWeek.length - 2)
-    .map((date) => getEpoch(date));
+  const lastFullWeek_EPOCH = lastFullWeek.map((date) => getEpoch(date));
 
   const onSearch = async (subreddit) => {
     setPosts([]);
